@@ -262,6 +262,128 @@ DOM Manipulation and Events
         -* once: true; --> is essentially var.removeEventListener(); removes the previous addEventListener once the original addEventListener has been activated, only allowing the event to occur once (useful for making buttons that only work once, link in shopping cart purchases)
 
 
+Javascript Fundamentals Part 5
+    -https://www.theodinproject.com/lessons/foundations-fundamentals-part-5
+        -Creating Objects
+        -Accessing Object Properties
+        -Being able to use multiple object operators
+        -Being able to use some powerful array functions
+        -Objects (Javascript.info)--> https://javascript.info/object
+            -Questions: 
+                -Square brackets also prive a way to obtain property name as the result of an expression?
+                -Square brackets and complex variable expressions? Addition of string in brackets...
+                -The use case of making a property from a variable
+                -0 and propery names
+                - _proto_ ?
+                -Quotes vs variables when using for property existence in test ?
+                -Storing undefined?
+                -How is the word `key` used when making object properties? Is it a reserved word?
+                -Integer properties
+            -*Object Creations
+                -* let user = new Object(); --> object constructor syntax
+                -* let user = {}; --> object literal syntax
+            -* Object Literals and Properties
+                -* let user = {
+                    name: "John",
+                    age; 30,
+                    isAdmin; false,
+                    "likes birds": true,
+                }; --> name and age are keys, which have to be strings. The keys store values, which in this case are "John" or 30, which can be any type of data. The variable user is now an object that holds the properties name and age. 
+            -* Add new key properties after an object has been declared
+                -* let goku = {}; goku.transformation = "Kaio-Ken"; goku["power level"] = "over 9000!!"; // This is how you add new keys and properties to an already made object
+                -* alert(user.name);// returns the value for the key name in object user, which is John
+                -* alert(user["likes birds"]);// returns the value for the key "likes birds", which is true. strings with spaces need keys that are written in "" when they are declared as literals and can only be called with [" "].
+                -* delete user.age;// Use to delete a  property
+            -* Extended Use of Square Brackets
+                -* Square brackets can be used to make variables return the values for pre-established keys of an object (property key names can be put in variables, and those variables can be called as a property of an object)if 1) the data the variable holds is a preestablished key in the object in question and 2) if the variable is called as a property of the object through [] and not . .
+                    -* let user = {}; user["likes birds"] = true; let varCheck = "like birds";          alert(user[varCheck]); //returns true
+                    -* Another example
+                        -* let user = {
+                            name: "John",
+                            age: 30
+                            };
+
+                            let key = prompt("What do you want to know about the user?", "name");
+
+                            // access by variable
+                            alert( user[key] ); // John (if enter "name")
+                -* Computed Properties
+                    -* [fruit] means that the key/property name should be taken from what the value of the variable fruit is, which, if the prompt is left unchanged, is apple
+                    VARIABLES CAN HOLD PROPERTY NAMES AKA KEYS, AND YOU CAN CALL THOSE VARIABLES AS PROPERTIES OF OBJECTS INSTEAD OF WRITING OUT THE PROPERTY NAME
+                    -* let fruit = prompt("Which fruit to buy", "apple");
+                        let bag {
+                            [fruit]: 5; //name/key of the property is taken from the variable fruit
+                        }
+                        alert(bag.apple); // returns 5 if the propmpt was named apple
+
+                -* Property value shorthand
+                    -* If you are creating a function that accepts parameters that have the same name as the property names/keys, and those parameters hold the values that you want to assign to those property names/keys, just use commas.
+                    -* function makeUser (name, age) {
+                        return {
+                            name,
+                            age,
+                        };
+                    }
+                    let user = makeUser("John", 30);
+                    alert(user.name); //John
+                    alert(user.age); //30
+                -* Property Name Limitations
+                    -* Property Names can be anything
+                    -* QUESTION--> WHAT IS _proto_???
+                -* Property Existence Test, "in" operator
+                    -* let user = { name: "John", age: 30 };
+                        alert( "age" in user ); // true, user.age exists
+                        alert( "blabla" in user ); // false, user.blabla doesn't exist
+                    -* let user = { age: 30 };
+                        let key = "age";
+                        alert( key in user ); // true, property "age" exists
+
+                -* "For...in" loops and Objects
+                    -* Allow you to create expressions that run as you loop through an object's property names/keys. Within the () of the for loop, you declare a variable that contains all of the keys within the object you are looping through (Similiar to an array's for loop);
+                    -* let user = {
+                        name: "John",
+                        age: 30,
+                        isAdmin: true
+                        };
+
+                        for (let key in user) {
+                        // keys
+                        alert( key );  // name, age, isAdmin
+                        // values for the keys
+                        alert( user[key] ); // John, 30, true
+                        }
+                -* Order of property names/keys in an Object when looped through or listed
+                    -* Property names/keys are looped through or listed in the order they were created, unless they arenumber, in which case they are looped through via number. See below example
+                        -* let codes = {
+                            "49": "Germany",
+                            "41": "Switzerland",
+                            "44": "Great Britain",
+                            // ..,
+                            "1": "USA"
+                            };
+
+                            for (let code in codes) {
+                            alert(code); // 1, 41, 44, 49
+                            }
+
+                        -* let codes = {
+                            "+49": "Germany",
+                            "+41": "Switzerland",
+                            "+44": "Great Britain",
+                            // ..,
+                            "+1": "USA"
+                            };
+
+                            for (let code in codes) {
+                            alert( +code ); // 49, 41, 44, 1
+                            }
+
+                    
+                        
+                    
+
+
+
 
 
 
