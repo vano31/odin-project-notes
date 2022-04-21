@@ -225,6 +225,7 @@ DOM Manipulation and Events
             -* for querySelector(`element[class=""]`); this can be used to select specific classes, id or data-* for DOM elements
             -* data-* essentially allows you to make your own specific ids for DOM elemeents
             -* using `` and ${e} allows you to use the e event object that is initiated under the eventListener and select a DOM element that has the same class attribute as whatever the event you intiated was
+            
 
     -* <audio src=""></audio> --> audio tags
         -*audio.play();
@@ -285,8 +286,8 @@ Javascript Fundamentals Part 5
             -* Object Literals and Properties
                 -* let user = {
                     name: "John",
-                    age; 30,
-                    isAdmin; false,
+                    age: 30,
+                    isAdmin: false,
                     "likes birds": true,
                 }; --> name and age are keys, which have to be strings. The keys store values, which in this case are "John" or 30, which can be any type of data. The variable user is now an object that holds the properties name and age. 
             -* Add new key properties after an object has been declared
