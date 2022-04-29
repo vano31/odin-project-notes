@@ -379,6 +379,47 @@ Javascript Fundamentals Part 5
                             alert( +code ); // 49, 41, 44, 1
                             }
 
+
+
+Fullstack Javascript- Intermediate HTML and CSS
+
+
+Form Basics 
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-form-basics
+    -Create Forms with HTMl
+    -Have a basic idea of how to style forms
+    -MDN- Form Overarching Guides (https://developer.mozilla.org/en-US/docs/Learn/Forms#introductory_guides)
+        -Introductory Guides to Forms
+        -The Differetnt Form Contorls Guides
+        -Form Styling Guides
+    -The Internetingishard Guide to Forms-https://web.archive.org/web/20210515225808/https://www.internetingishard.com/html-and-css/forms/
+        -Mobile First Development Approach-https://web.archive.org/web/20210515225808/https://www.internetingishard.com/html-and-css/responsive-design/#mobile-first-development
+        -Text input, Text Area, Radio Buttons, Checkboxes, Dropdown Menu, button
+        -<form action="" method="" class="">
+            -action- URL that processes form
+            -method- either post (change server info) or get (retrievce server info)
+            -if action is blank, server is submitted to the same URL
+            -*em element- italics
+            -*  * selecetor in CSS- the universal selector- used to select everything in html, can be used to reset all margins and paddings to account for all browsers
+            -* width:50% for CSS- defines what percentage the selected element's width makes up the parent container's width
+        -<label for="fullName">Name</label>
+         <input id="fullName" name="fullName" type="text"/>  
+            - label- used to make state what the input is. for="" must equal input's id="". 
+            -input tag is a single <>
+            -input tag for general form information. name="" is the name for the variable  that is sent to the server. value="", which will be introduced later, is for the variable's value that is sent to the server, usually used for answer choices. type="text" shows that the input is for text-typing.
+            -elementparent elementchild[input="text"] {} for CSS is an attribute selector
+        -<label for="email">Email</label>
+         <input id="email" name="email" type="email" placeholder=""/>
+            -input type email is for emails
+            placeholder allows you to have a placeholder, per name
+
+
+
+
+
+
+
+
                     
                         
                     
