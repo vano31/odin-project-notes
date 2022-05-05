@@ -430,7 +430,18 @@ Form Basics
             -Act like buttons- can reate error messages depending on email specifics
             -for CSS, use button:hover and button:active for knowledge on how to change status
     -MDN Docs- Your First Form - https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form
-        -
+        -<button type="">
+            -type="submit" means that all information in the form the button is placed in gets sent to the server
+            -type="reset" resets all information in the form that the button is placed in
+            -type="button" can is custom to whatever you want it to do
+            -*Lists can be used to organize forms. Just make list-style:none, padding:0 and margin:0 for uL
+            -* :focus CSS (https://developer.mozilla.org/en-US/docs/Web/CSS/:focus)
+                -*Any element that recieves focus can be changed using the element:focus {} selector in CSS
+                -can be used to make text field borders highligh a certain color when highlighted
+            -*Vertical Align (https://css-tricks.com/almanac/properties/v/vertical-align/)
+                -*inline or inline-block elements that are lined up next to each other can have their vertical locations lined up in various formats (akin to flexbox row align items)
+                -* Can be used to align large text areas with their labels via vertical align: top, so long as the labels are inline or inline block
+
 
 
 
