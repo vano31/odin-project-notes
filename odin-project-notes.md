@@ -412,6 +412,25 @@ Form Basics
          <input id="email" name="email" type="email" placeholder=""/>
             -input type email is for emails
             placeholder allows you to have a placeholder, per name
+            -.form-row input[type='email']:invalid --> CSS pseudo classes are used in CSS files to make elements look different when they are wrong(ie red)
+
+        -fieldset > legend > input[type="radio" id(same as for in label), name, value] > label[for(same as id in inout)]
+            - Input type Radio buttons are used for selection
+            -Radio type input must always work in groups, and must always have a fieldset and legend
+            -each radio type input mudst share a name (same variable access) but differ in value (the variable data) for the backend
+            -Radio type inputs must have labels like text type inputs, each label having the same for value as the id type of the radio input
+            -fieldset does not use flexbox and instead uses float 
+        -Select Elements(aka Dropdown Elements)
+            -select[id, name] > option[value]
+            -Use for drop down menus/ selection. Harder to style
+        -Text Areas
+            -<text area id, name></textarea>
+            -Used to create a textbox that people can write into. This uses its own individual tag and has a closing tag, unlike the <input> tag, that is an individual tag
+        -Buttons
+            -Act like buttons- can reate error messages depending on email specifics
+            -for CSS, use button:hover and button:active for knowledge on how to change status
+    -MDN Docs- Your First Form - https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form
+        -
 
 
 
