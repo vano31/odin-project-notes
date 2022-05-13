@@ -420,9 +420,13 @@ Form Basics
             -each radio type input mudst share a name (same variable access) but differ in value (the variable data) for the backend
             -Radio type inputs must have labels like text type inputs, each label having the same for value as the id type of the radio input
             -fieldset does not use flexbox and instead uses float 
+            -legend is the "label" for the entire fieldset and only needs text
         -Select Elements(aka Dropdown Elements)
             -select[id, name] > option[value]
             -Use for drop down menus/ selection. Harder to style
+        -Checkboxes
+            -<input type="checkbox"/>
+            -Similiar to radio elements, but multiple values can be checked off. This means that you dont need a fieldset or legend
         -Text Areas
             -<text area id, name></textarea>
             -Used to create a textbox that people can write into. This uses its own individual tag and has a closing tag, unlike the <input> tag, that is an individual tag
@@ -441,6 +445,61 @@ Form Basics
             -*Vertical Align (https://css-tricks.com/almanac/properties/v/vertical-align/)
                 -*inline or inline-block elements that are lined up next to each other can have their vertical locations lined up in various formats (akin to flexbox row align items)
                 -* Can be used to align large text areas with their labels via vertical align: top, so long as the labels are inline or inline block
+    -MDN Docs- How to Structure a Web Form (https://developer.mozilla.org/en-US/docs/Learn/Forms/How_to_structure_a_web_form)
+        -....
+
+
+Form Validation
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-form-validation
+        -LO
+            -Explain what vorm validations are
+            -Know how to use a few of the basic built-in HTML validations
+            -Know how to build custom validations
+        -required attribute
+        -minlength = "" and maxlength="" for character length
+        -min="" and max="" (for type="number)
+        -Pattern Validations - pattern=""
+        -placeholder="" --> For having information in a form as an example
+        -title = "" --> Used to give a more descriptive message in input 
+        -CSS: pseudo classes :invalid and :valid for when the input fits validation criteria (ex: input:invalid { border-color: red;})
+    -MDN Docs- Client-Side Form Validation (https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
+        -if required attribute is on an element and that element is not filled by client, it counts as an :invalid pseudoclass on CSS
+        -Its good user ettiquete to indicate to users what parts of the form are necessary (use the *)
+        -Basic pattern rules (for pattern="")
+            -a--> matches the character a
+            -abc --> matches a followed by b followed by c
+            -ab?c --> matches a, optional b, followed by c
+            -ab*c --> matches a, followed by any number of b, followed by c
+            -a|b --> matches one character, a or b
+            -abc|xyz --> matches character combination abc or xyz (but not abcxyz)
+            -[Aa]bc --> matches character combination Abc or abc
+            -<textarea> does not support the pattern attribute
+        -for <input type="number" min="1" max="10" valiue="1">, value is the default number in the input if no number is specified
+        - Example of Styling for specific inputs
+            -input[type="text"],
+            input[type="email"],
+            input[type="number"],
+            textarea,
+            fieldset {
+            width : 100%;
+            border: 1px solid #333;
+            box-sizing: border-box;
+            }
+    -Sitepoint- A Complete Guide to HTML Forms and Constraint Validation (https://www.sitepoint.com/html-forms-constraint-validation-complete-guide/)
+        -Remember- client side validation is not a substitute for server-side validation!!!
+        -List of possible INPUT TYPES: button, checkbox, color, date, datetime-local, email, file (used to pick files), hidden, image, month, number, password, radio, range (acts as a slider control), reset, search, submit, tel, text, time, url, week
+        -List of possible INPUT ATTRIBUTES: accept (for file upload), alt (alternative text for image types), autocomplete, autofocus, capture, checked (to decide if radio option is checked)...
+        -HTML Output Fields
+            -https://www.w3schools.com/tags/tag_output.asp --> Info on the output tag --> Used to display results from calculations, usually as a result of a script
+            -https://www.w3schools.com/jsref/event_oninput.asp --> Essentially using JS code in HTML for forms
+            -output: a text result of a calculation or user action
+            -progress: a progress bar with value and max attributions
+            -meter: a scale which can change between green, amber, and red depending on the values set for the value, min, max, low, high, and optimum attributes
+        -Input Labels: You can wrap input elements inside label elements:
+            -<label>your name <input type="text" name="name" /><label>
+        -Input Behaviors: 
+            -Credit Cards: Instead of using type="number", use type="text" and and set inputmode="numeric" so that the text that you type is a number (and so a number keyboard appears on phones) --> https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
+                -autocomplete="cc-number" fills in pre-configured or previously entered credit card numbers, source usually up to browser --> https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
 
 
 
