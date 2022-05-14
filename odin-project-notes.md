@@ -500,6 +500,27 @@ Form Validation
         -Input Behaviors: 
             -Credit Cards: Instead of using type="number", use type="text" and and set inputmode="numeric" so that the text that you type is a number (and so a number keyboard appears on phones) --> https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
                 -autocomplete="cc-number" fills in pre-configured or previously entered credit card numbers, source usually up to browser --> https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+        -Avoid reinventing standard controls with Javascript
+        -CSS Validation Style
+            -Example: input:invalid{color: red}
+            -See list of pseudoclasses
+            -Styling placeholder text:
+                -input[type="email"]::placeholder {
+                    color: blue;
+                    }
+    -Form Validation UX in HTML and CSS (https://css-tricks.com/form-validation-ux-html-css/)
+        -**First Time Experimenting with Fast Switching Strategy for Skim Reading
+        -Headings and SUbheadings
+            -You can make the label look like a placeholder
+            -Make certain inputs required
+            -Positively indicate valid input values
+            -Show reminders about validation of type
+                -Sub Trick! Testing if an input has a value or not
+            -You can create robust validations
+                -http://www.the-art-of-web.com/javascript/validate-password/
+SVG
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-svg
+    
 
 
 
