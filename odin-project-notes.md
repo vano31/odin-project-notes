@@ -520,6 +520,54 @@ Form Validation
                 -http://www.the-art-of-web.com/javascript/validate-password/
 SVG
     -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-svg
+        -What are SVGs?
+            -Extensive Markup Language
+        -Drawbacks
+        -Anatony
+            -xmlns- XML Namespace
+            -viewBox
+            -class and id attributes
+            -<circle>, <rect>, <path>, <text>
+            -fill and stroke
+        -Embedding
+            -Through either <img> or background-image: url(./my-image.svg)
+
+Tables
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-tables
+        - HTML Table (https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics)
+            -What is a table
+                -Styling Tables
+                    -https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables
+                -Link to CSS Table Stylesheet (https://github.com/mdn/learning-area/blob/main/html/tables/basic/minimal-table.css) and HTML Template (https://github.com/mdn/learning-area/blob/main/html/tables/basic/blank-template.html)
+            -Active Learning: Creating your first table
+                -<table></table> --> Used for body of table
+                -<td> --> table data --> Smallest container for a table --> Make up rows when placed consecutively
+                -<tr> --> table row --> Used to define a row within a table
+            -Adding headers with <th> elements
+                - -<th> --> table header
+                - scope="row" or scope="col" are attributes in <th> that define whether headings are for columns or rows
+            -Allowing cells to span multiple rows and columns
+                -colspan="1" use to expand column via cells
+                -rowspan="1" use to expand row via cells
+            -Providing common styling to columns
+                -<col>
+                -<colgroup>
+                -Used to prevent styling of entire rows and columns to be done via cell by cell
+                    -<colgroup>
+                        <col>
+                        <col style="background-color: yellow">
+                    </colgroup>
+                    -In the above example, only the second column in the table would have a yelloe background color
+
+        -HTML table advanced features and accessibility (https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced)
+            -Adding a caption to your table with <caption>
+            -Adding structure with <thead>, <tfoot>, <tbody>
+            -Nesting Tables
+            -Tables for Visually Impaired Users
+                -Using column and row headers
+                -The scope attribute
+                -The id and headers attributes
+
     
 
 
