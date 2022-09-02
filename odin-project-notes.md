@@ -568,6 +568,68 @@ Tables
                 -The scope attribute
                 -The id and headers attributes
 
+
+
+
+
+Intermediate HTML and CSS --> Intermediare CSS Concepts
+
+Default Styles
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-default-styles
+        -You'll learn about default browser styles
+        -You'll learn how to use a CSS reset to remove, or change those default styles
+        -Reboots, Resets and Reasoning --> https://css-tricks.com/reboot-resets-reasoning/
+            -https://css-tricks.com/reboot-resets-reasoning/
+                -resets "reset" CSS styles to have no cusotmization in order to increase browser compatibility
+                    -Meyers Reset, HTML5 Reset
+                -Normalize.css
+                    -The standard reset used for modern browsers
+                    -Didnt remove styling from things that were consistent for all browsers
+                    -More detailed in documentation
+                    -Supports altering groups based on user specification rather than just mass changing w/o consent
+
+                -Reboot
+                    - A more opinionted version of Normalize.css??
+                -Browserslist
+                    -https://css-tricks.com/browserlist-good-idea/
+                    -Used to determine which resets are good for which browser
+
+
+CSS Units
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-css-units
+        -LO: Learn the difference between  relative and absolute units
+        -LO: You'll learn when its approproate to use different units
+        -Absolute Units
+            -Units that are always the same in any context
+            -Ex: the -px unit (pixel size does not change relative to anything on the page)
+            -px shouold be the only absolute unit you use
+        -Relative Units
+            -Can change based on the context
+            -em and rem (https://css-tricks.com/confused-rem-em/   https://www.geeksforgeeks.org/difference-between-em-and-rem-units-in-css/)
+                -Both refer to font size of elements
+                -1em: relative to the font size of its nearest or direct parent --->font-size of an element-> if an element's font size is 16px, then settings its widths to 4em would make its width 64px
+                -1rem: relative tot the html (root) font-size font-size of the root element (either :root or html) and not the font-size of its nearest parent
+                -Better to use rem over em due to being able control font size of website overall
+            -Viewport Units
+                -vh and vw refer to the relative size and width of the viewport 
+                -1vh equals 1% of the viewport height, 1vw equals 1% of the viewport width
+        -MDN Docs- What is a CSS Value (https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#what_is_a_css_value)
+            -What is a CSS Value
+            -Numbers, Lenghts, and Percentages
+                -Lengths
+                -Percentages
+                -Numbers
+            -Color
+                -Color Keywords
+                -Hexadecimal RGB Values
+                -RGB and RGBA Values
+                -Hue, Saturation, and Lightness Values
+            -Images
+            -Position
+            -String and String Identifiers
+            -Functions
+
+        
     
 
 
