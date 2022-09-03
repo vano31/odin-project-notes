@@ -668,7 +668,62 @@ CSS Units
             -Use rem for better relative spacing
             -px can be used when you want exact dimensions and dont mind mobile or non-tradiional web zooming
         -https://css-tricks.com/fun-viewport-units/ --> Stickies, headers, footers, scroll indicators
-        
+
+More Text Styles
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-more-text-styles
+        -LO: Learn how to use custom fonts on your web pages
+        -LO: Learn some text-related CSS properties
+        -Fonts
+            -The System Font Stack
+                -Use to ensure that you don't run out of compatible font
+                -body {
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+                    }
+            -Online Font Libraries
+                -Use when you want to get fonts off of the internet
+                -Make sure that you still have a backup font plan
+                -Use HTML <link> Tag on top of HTML File 
+                    -<link rel="preconnect" href="https://fonts.googleapis.com">
+                -Use @import tag on top of CSS File
+                    -@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+                -Using either above method can allow you to put font into CSS file
+                -Still use fallbacks in case an external API is being used to access the font
+            -Downloaded Fonts
+                -Use the @font-face on top of CSS file to load a font-family onto your webpage that is local to your computer
+                - @font-face {
+                    font-family: my-cool-font;
+                    src: url(../fonts/the-font-file.woff);
+                    }
+        -Text Styles
+            -font-styles
+                -Used to make a font italic (ie font-style: italic;)
+                    -Use for large sentences or headings
+                -<em></em> is used in the HTML for specific words to be italic WHILE also marking the word for importance within the HTML file.
+                    -Use only for single words or phrases that you want to have semantic phrases
+            -letter-spacing
+                -Used to decrease or increase spacing between letters
+                -ie: letter-spacing: 0.5em; (increases spacing)
+                -ie: letter-spacing: -0.15em; (decreases spacing)
+            -line-height
+                -Adjusts spacing between lines (ie like Word documents double space or single space)
+                -ie: line-height: 1.5; (increases space between lines by 1.5)
+                -https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
+            -text-transform
+                - Changes the case of the given text
+                -https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform
+                    -text-transform- capitalize; Turns the first letter of each word capitalized
+                    -More values: upperclose, lowercase, none, full width, full-size-kana
+            -text-shadow
+                -Used for making text shadows
+                -NOT RELATED: You can use span and background color to highlight words (https://www.computerhope.com/issues/ch001391.htm)
+                -https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow
+                    -text-shadow: 5px 5px #558ABB ; (offset of x, offset of y, color)
+            -ellipsis
+                -For dealing with text overflow, show to "..." 
+                
+More CSS Properties
+    -
+
     
 
 
