@@ -804,6 +804,51 @@ Advanced Selectors
             [attribute*="value"] - *= The wildcard selector will match anywhere inside the string.
 
 
+Positioning
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-positioning
+        -LO: Learn how to use absolute positioning
+        -LO: Lean how to use fixed positioning
+        -LO: Learn how to use sticky positioning
+        -LO: Learn the difference between each property
+        -Static and Relative Positioning
+            -position: static -- Default position mode; top, right, bottom, and left do not affect element position
+            -position: relative -- allow top, right etc. to displace element relative to its normal position in the flow of the document
+        -Absolute Positioning
+            -position: abosolute -- allows you to position something at the exact point of the screen without disturbing other elements around it and without other elements being disturbed by it
+            -Removes that element from normal document flow while being positioned relative to an ancestor element
+            -Good for modals ("sign up before continuing" forms), images with captions, and icons on top of other elements
+            -Not suggested for entire page layouts---> For entire page layouts, use grid or flexbox!
+        -Fixed Positioning
+            -position: fixed -- removes elements from normal document flow and uses top, right, left, bottom to position element relative to viewport. 
+            -Element will stay fixed to position on screen even as page scrolls
+        -Sticky Positioning
+            -position: sticky -- Sticky elements will act like relative  positioned elements until you scroll past them, then they start behaving like fixed elements. They are also not taken out of the normal flow of the document.
+        -Learn CSS Position in 9 Minutes (https://www.youtube.com/watch?v=jx5jmI0UlXU)
+        -MDN Docs- CSS Position - (https://developer.mozilla.org/en-US/docs/Web/CSS/position)
+            -Absolute positioning: The element is removed from the normal document flow, and no space is created for the element in the page layout. It is positioned relative to its closest positioned ancestor, if any; otherwise, it is placed relative to the initial containing block.
+            -Absolute positioning: The containing block is the ancestor relative to which the element is positioned.) If the element has margins, they are added to the offset.
+            -Sticky Positioning: is an element whose computed position value is sticky. It's treated as relatively positioned until its containing block crosses a specified threshold (such as setting top to value other than auto) within its flow root (or the container it scrolls within), at which point it is treated as "stuck" until meeting the opposite edge of its containing block.
+        -CSS Tricks- Absolute, Relative, Fixed Positioning (https://css-tricks.com/absolute-relative-fixed-positioining-how-do-they-differ/)
+            - Relative Positioning: limits the scope of absolutely positioned child elements. Any element that is a child of the relatively positioned element can be absolutely positioned within that block. 
+            - Relative Positioning: One is that it introduces the ability to use z-index on that element, which doesn’t work with statically positioned elements. Even if you don’t set a z-index value, this element will now appear on top of any other statically positioned element. You can’t fight it by setting a higher z-index value on a statically positioned element.
+        -Kevin Powell- Fixed vs Sticky Positioning- (https://www.kevinpowell.co/article/positition-fixed-vs-sticky/)
+
+CSS Functions
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-css-functions
+        -LO: Recognize the basic parts of a CSS Function
+        -LO: Learn about the calc(), min(), max(), and clamp() functions and how to use each one
+        -What is a function and how are they used in CSS?
+        -calc()
+        -min()
+        -max()
+        -clamp()
+        -MDN CSS Functional Notation(https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions)
+            -
+        -Web.dev article- min(), max(), and clamp(): three logical CSS functions to use today
+        -(Optional article)- Moderncss.dev- Practical Uses of CSS Math Functions: calc, clamp, min, max
+        
+
+
                 
 
 
