@@ -615,20 +615,59 @@ CSS Units
                 -1vh equals 1% of the viewport height, 1vw equals 1% of the viewport width
         -MDN Docs- What is a CSS Value (https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#what_is_a_css_value)
             -What is a CSS Value
+                -value types such as <color> or <length> that are usable for a elements in a page have full access to all the possible values those value types can take 
             -Numbers, Lenghts, and Percentages
                 -Lengths
+                    -Absolute lengths: pt, px
+                    -Relative lengths: em, rem, vh, vw, lh (line height), rlh (root element line height)
+                    -em--> relative to the font size of the parent element (can be progressively stacked, ie if each nested div has 0.5em as a font size, the divs will continually get smaller and smaller)
+                    -rem --> relative to the root element (ie html {font-size: 16px}) font size. Does not stack with progressive div nesting
                 -Percentages
-                -Numbers
+                    - When CSS properties such as font-size or width are set via percentage, value percentage is relative to that of the parent element
+                    -Effect of percentage values also stacks with progressive div nesting
+                -Numbers (Opacity)
+                    - Opacity value of elements can take a number between 0 (full transparency) and 1 (full opacity)
             -Color
-                -Color Keywords
+                -Color Keywords (ie red, blue, antiquewhite, greenyellow)
                 -Hexadecimal RGB Values
-                -RGB and RGBA Values
-                -Hue, Saturation, and Lightness Values
+                -RGB and RGBA Values --> ( rgb(x,y,z) where x,y,z represent numbers from 0 to 255)
+                    -rgba(x,y,z,t) exists where t is a number from 0 to 1 for opacity. The opacity only affects the color and not the enitre element, unlike the normal opacity value type
+                -Hue, Saturation, and Lightness Values --> hsl (x,y,z) where x,y,z are percentages from 0-100%
+                    -x is hue (color wheel), y is saturation (0 is no color/grey and 100% is full sat, z is lightness (0 is complete black and 100 is complete white))
+                    -hsla(x,y,z,t) exists where t is opacity again, same rules as rgba() apply
             -Images
+                -Used whenever an image is a valid value (ie: url or linear gradient )
+                -Ex: .image {
+                    background-image: url(star.png)
+                }
+                -Better explanation of linear-gradients: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient
             -Position
+                -Represents 2d coordinated for positioning a background image
+                -Can use <background-position> property
+                -Examples: background-position: bottom 50px right 100px 
+                -background-position: center
+                -background-position: right 35% bottom 45%
             -String and String Identifiers
+                -String identifiers are keywords used for values
+                -Quoted strings in CSS are used to display strings in the window
+                -See Example Below--> It will show "Read this- My name is Goku"
+                <p>My name is Goku<p>
+                -<style>
+                    p::before {
+                    content: "Read this -";
+                    }
+                </style> 
+                -Content must be used with the pseudo elements ::before or ::after
             -Functions
-
+                -CSS can be used to perform basic arithmetic for values
+                -Example Below:
+                -.box {
+                width: calc(20% + 100px);
+                }
+        -CSS Units: em, rem, px (https://codyloyd.com/2021/css-units/)
+            -Use rem for better relative spacing
+            -px can be used when you want exact dimensions and dont mind mobile or non-tradiional web zooming
+        -https://css-tricks.com/fun-viewport-units/ --> Stickies, headers, footers, scroll indicators
         
     
 
