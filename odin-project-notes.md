@@ -722,9 +722,89 @@ More Text Styles
                 -For dealing with text overflow, show to "..." 
                 
 More CSS Properties
-    -
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-more-css-properties
+        -LO: Learn about a lot of useful CSS Properties
+        -Background
+            -The background property is shorthand for 8 different background properties
+            -Used to change background colors, specify background images, change the position and size of background images, and change how background images repeat or tile if they are too small to fit container
+            -https://developer.mozilla.org/en-US/docs/Web/CSS/background
+        -Borders
+            -Border: width, style, color (ie border: 2px dashed green)
+            -https://developer.mozilla.org/en-US/docs/Web/CSS/border
+            -Border Radius: Used to create rounded corners on borders
+            -border-radius: 10px; radius for all 4 sides
+            -border-radius: 10px 5%; radius for top left/bottom right AND top right/bottom left
+            -https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
+        -Box-shadow
+            -Used to create a shadow around boxes for interesting effects
+            -https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+        -Overflow
+            - Used to control what happens when an element's content becomes too big to fit in its block formatting context
+            -https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+        -Opacity
+            -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-more-css-properties
+        -Additional Resources
+            -CSS Tricks- Background Shorthand
+                -https://css-tricks.com/almanac/properties/b/background/
+            -CSS Tricks- Overflow
 
-    
+
+Advanced Selectors
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-advanced-selectors
+        -LO: Understand how to use parent and sibling selectors
+        -LO: Recognize difference between pseudo classes and pseudo elements
+        -LO: Learn about some of the most useful and common pseudo elements and pseudo classes
+        -LO: Learn about the different ways to select an attirubte or its parts
+        -Parent and Sibling Combinators
+            -The Child Combinator >
+                -Ex: main > div {}
+            -The Adjacent Sibling Combinator +
+                -Ex: main + div {}
+            -The General Sibling Combinator ~
+                -Ex: main ~ div {}
+        -Pseudo-Selectors
+            -Made up of pseudo classes and pseudo elements
+        -Pseudo-Classes
+            -Have one colon :
+            -Have the same specificity of normal classes (0,0,1,0)
+            -CSS Tricks Article on CSS Specifity (https://css-tricks.com/specifics-on-css-specificity/)
+            -Dynamic and User Selected Pseudo Classes
+                - :focus - for elements selected via cursor or keyboard
+                - :hover - for anything selected by the mouse pointer
+                - :active - elements currently being clicked
+                - :link - for unvisited links
+                - :visited - for all visited links
+            -Structural Pseudo Classes
+                - :root - equivalent to the html element and represents the top of the document (but can be used for SVG)
+                - :first-child - first child within a group of sibling elements
+                - :last-child - last child within a group of sibling elements
+                - :empty - elements with no children
+                - :only-child - elements with no siblings
+                - :nth-child(d) - selects the dth element
+                - :nth-child(dn) - selects every dth element
+        -Pseudo Elements
+            -Have two colons ::
+            - Allow you to affect parts of HTML that are not elements as all
+            - Have the same specificity of normal elements (0,0,0,1)
+            - ::marker - customize <li> bullets or numbers
+            - ::first-letter and ::first-line - allow you to (you guessed it!) give soecial styling to the first letter or line of some text
+            - ::selection allows you to change the highlighting when a user selects text on the page
+            -::before and ::after allow us to add extra elements onto the page with CSS, instead of HTML. Using it to decorate in text in various ways is one common use case
+            - <style>
+                .emojify::before {
+                    content: '😎 🥸 🤓';
+                }
+        -Attribute Selectors
+            -[attribute] - This general selector will select anything where the given attribute exists. Its value doesn’t matter.
+            selector[attribute] - Optionally we can combine our attribute selectors with other types of selectors, such as class or element selectors.
+            [attribute="value"] - To get really specific, we can use = to match a specific attribute with a specific value.
+
+            -[attribute^="value"] - ^= Will match strings from the start.
+            [attribute$="value"] - $= Will match strings from the end.
+            [attribute*="value"] - *= The wildcard selector will match anywhere inside the string.
+
+
+                
 
 
 
