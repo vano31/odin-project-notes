@@ -47,3 +47,9 @@ https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts
 VSCODE Debugging/Python Running
 https://code.visualstudio.com/docs/editor/debugging
 https://code.visualstudio.com/docs/python/python-tutorial
+
+
+Making Polygons, Shapes and Matrix Transformations in CSS
+https://developer.mozilla.org/en-US/docs/Web/CSS/basic-shape/polygon --> Polygons
+https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix --> Matrix Transformation
+https://css-tricks.com/the-shapes-of-css/ --> CSS Shapes

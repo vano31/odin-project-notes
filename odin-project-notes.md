@@ -838,14 +838,46 @@ CSS Functions
         -LO: Recognize the basic parts of a CSS Function
         -LO: Learn about the calc(), min(), max(), and clamp() functions and how to use each one
         -What is a function and how are they used in CSS?
+            -functions are reusable pieces of code which perform specific tasks
+            -Ex: rgb(0,42,255) or linear-gradient(90deg, blue,red)
+            -Can't make your own functions in CSS
         -calc()
+            -Used for calculations and can be nested and also can mix units
+            -Ex: :root {
+                --header: 3rem;
+                --footer: 40px;
+                --main: calc(100vh - calc(var(--header) + var(--footer)));
+}
         -min()
+            -Holds a list of arguments and will always choose the smallest of the list whenever possible
+            -Ex: #iconHolder {
+                    width: min(150px, 100%);
+                    height: min(150px, 100%);
+            }
+            -In the above example, if #iconholder is present within a container that has resize set to both (meaning the container's size can be changed by the user), then #iconholder will always be the SMALLEST size within the min() function
+            -MORE INFO ON resize --> https://developer.mozilla.org/en-US/docs/Web/CSS/resize
+
         -max()
+            -Holds a list of arguments and will always choose the largest of the list whenever possible
+            -Ex: width: max(100px, 4em, 50%);
+            --In the above example, if #iconholder is present within a container that has resize set to both (meaning the container's size can be changed by the user), then #iconholder will always be the LARGEST size within the min() function
         -clamp()
+            -Holds three values and uses them to set the smallest, largest, and ideal value
+            -Ex: h1 {
+                font-size: clamp(320px, 80vw, 60rem);
+                }
         -MDN CSS Functional Notation(https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions)
             -
         -Web.dev article- min(), max(), and clamp(): three logical CSS functions to use today
+            -When using a calculation inside of a min(), max(), or clamp() function, you can remove the call to calc().  For example, writing font-size: max(calc(0.5vw - 1em), 2rem) would be the same as font-size: max(0.5vw - 1em, 2rem). 
+            -Elements of Typographic Style: optimal length of lines in a normal column page is anything from 45ch to 75ch in length
+                -p {
+                    width: clamp(45ch, 50%, 75ch);
+                    }
+            -min() max() and clamp() can be used to keep padding at a certain size (SEE EXAMPLES IN ARTICLE)
+            -Can be also be used to scale font size as window changes in size (SEE EXAMPLES IN ARTICLE)
         -(Optional article)- Moderncss.dev- Practical Uses of CSS Math Functions: calc, clamp, min, max
+            -LOOK AT THIS LATER TO GET A BETTER GRASP OF COLOR PALLETE GENERATION
         
 
 
