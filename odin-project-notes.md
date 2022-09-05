@@ -612,6 +612,7 @@ CSS Units
                 -Better to use rem over em due to being able control font size of website overall
             -Viewport Units
                 -vh and vw refer to the relative size and width of the viewport 
+                    -Making something 200vh means that you can scroll down because the element is twice the size of the screen. Same concept applies for 200 vw.
                 -1vh equals 1% of the viewport height, 1vw equals 1% of the viewport width
         -MDN Docs- What is a CSS Value (https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#what_is_a_css_value)
             -What is a CSS Value
@@ -798,6 +799,10 @@ Advanced Selectors
             -[attribute] - This general selector will select anything where the given attribute exists. Its value doesn’t matter.
             selector[attribute] - Optionally we can combine our attribute selectors with other types of selectors, such as class or element selectors.
             [attribute="value"] - To get really specific, we can use = to match a specific attribute with a specific value.
+                -Example: img[src="puppy.jpg"] {
+                    width: 100vw;
+                    height: 100vh;
+                }
 
             -[attribute^="value"] - ^= Will match strings from the start.
             [attribute$="value"] - $= Will match strings from the end.
@@ -878,6 +883,79 @@ CSS Functions
             -Can be also be used to scale font size as window changes in size (SEE EXAMPLES IN ARTICLE)
         -(Optional article)- Moderncss.dev- Practical Uses of CSS Math Functions: calc, clamp, min, max
             -LOOK AT THIS LATER TO GET A BETTER GRASP OF COLOR PALLETE GENERATION
+
+Custom Properties
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-custom-properties
+        -LO: Learn how to declare a custom property
+        -LO: Learn how to access a custom property in a rule declaration
+        -Using Custom Properties
+            - Example (in CSS): 
+                -.error-modal {
+                    --color-error-text: red;
+                    --modal-border: 1px solid black;
+                    --modal-font-size: calc(2rem + 5vw);
+
+                    color: var(--color-error-text);
+                    border: var(--modal-border);
+                    font-size: var(--modal-font-size);
+                    }
+                - use "--variable-is-hyphenated" to create a variable with a preset CSS property
+                -to call the CSS variable later in the CSS file, use var(--variable-is-hyphenated)
+            -Fallback Values
+                -var(x,y) accepts two parameters. x is the initial property assigned to a CSS variable. y is the fallback value for the property if x does not exist yet. 
+                -Example: color: var(--undeclared-variable, black);
+                    -Since --undeclared-variable does not exist, the property of color will just be black
+                -y in var(x,y) can be another var(x,y), so you can stack fallback values
+                    -Example: color: var(--undeclared-again, var(--color-text, yellow));
+        -Scope
+            -Similiar to Javascript, CSS variables can only be used as properties for the selectors in which they were made in. If a CSS variable is created in a CSS selector element and another CSS selector element that is not within the scope of the first CSS selector element tries to use the CSS variable, it won't work
+            -The :root Selector
+                -A psuedo:class that acts like html selector element in CSS but with higher specificity (probably because its technically a class (see CSS specifity 0,0,1,0))
+                -All CSS variables declared in :root {} in the CSS file can be freely used by any CSS selector element
+        -Creating Themes with Custom Properties
+            -Using Javascript (const root = document.documentElement, which puts the root element into constant root) for button functionality and two different scopes for the two different classes in the root element we want (:root.light and :root.dark), each with their own CSS variables, we can create a toggle button for light and dark themes (SEE ORIGINAL ODIN PROJECT ARTICLE FOR CLEARER EXAMPLE)
+            -Remember that the reason :root.light {} can exist as a selector is because :root and .light are simply two classes (one normal class and one pseudo class that represents the <html> element) that are stacked and can have whatever property values you want, similiar to how, for <p class="animal mammal">, in CSS .animal.mammal{} can have as many properties and values as you want. 
+
+            -Media Queries
+                - @media (prefers-color-scheme: dark) {
+                    :root {
+                        --dark-setting-one: black;
+                        --dark-setting-two: grey; 
+                    }
+                }
+                -Use if you want to have the user's native computer or browser settings to be automatically inputed on the site
+                -Only "light" or "dark" are valid values for the media query
+                -"light" is for when a user has a light theme specified or when there is no preference
+                -DOES NOT ALLOW USER TO CHANGE THEME THEMSELVES
+        -MDN Using CSS Custom Properties (Variables) (https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+            -Inheritance of Custom Properties
+                -Remember that Custom Properties (ak CSS Variables) do inherit from the parent. Be mindful of this when assigning values to siblings, children, or parents
+            -Handling Invalid Custom Properties
+                -When a normal (not custom CSS variable) value is invalid for a specific element property (ie: color: 16px), then the browser finds the next suitable property value assigned by the file
+                -When using a custom CSS variable value for a specific element property and it is invalid, the browser will first see if the custom property will be inherited from a parent. If not, it does not look for the next suitable property value assigned by the file-IT GOES STRAIGHT TO TEH DEFAULT INITIAL VALUE
+            -Values in Javascript
+                -(Javascript: Getting Style Declarations)https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyValue
+                    -Use to get/return the property value of a specific element's CSS style property
+                    -Ex:  const value = declaration.getPropertyValue('margin'); // returns "1px 2px"
+                -https://stackoverflow.com/questions/15241915/how-to-change-css-property-using-javascript
+                    -Use to directly set the style property of an element using Javascript/JS
+                    -Ex: document.elm.style.border = "3px solid #FF0000";
+                    -Ex: document.getElementById("p2").style.color="blue";
+                -(Getting All Computed Styles of a Specific Element)-https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+                    -getComputedStyle(desiredElement) is a Javascript method that gets all of the computed styles values of an Element in Javascript (keep in mind this element must first be a variable in js first, obviously)
+                    -Ex (see result in article): const para = document.querySelector('p');
+                        const compStyles = window.getComputedStyle(para);
+                        para.textContent = `My computed font-size is ${compStyles.getPropertyValue('font-size')},\n` +
+                        `and my computed line-height is ${compStyles.getPropertyValue('line-height')}.`;
+                    -Ex: getComputedStyle(element).getPropertyValue("--my-var"); (this example is from MDN's Using CSS Custom Properties article)
+        -EXTRA: MDN document.documentElement(Javascript JS) - https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement
+            -document.documentElement returns the element that is the root element of the document (for example, the <html> element for HTML documents)
+            -Ex: const rootElement = document.documentElement;
+                -the variable rootElement now stores the <html> element as a JS variable
+            -Remember that since :root is a pseudoelement that represents the <html> element in CSS, If you add a bunch of CSS variables with properties and define them in CSS under :root {}, they can be used anywhere in the CSS sheet because they are scoped everywhere
+            -Also remember that since :root is still technically a pseudoCLASS (even though it represents an element), it can have more classes stacked on them and used seperately in the CSS file (ie :root.light{} and :root.dark{}) to be called upon later in JS during events (similiar to how animal.mammal{} and animal.fish{} are stacked classes in CSS that can have different property values that can be toggled with JS later)
+        -Extra: MDN Documents- Child Nodes- https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes
+
         
 
 

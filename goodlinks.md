@@ -53,3 +53,11 @@ Making Polygons, Shapes and Matrix Transformations in CSS
 https://developer.mozilla.org/en-US/docs/Web/CSS/basic-shape/polygon --> Polygons
 https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix --> Matrix Transformation
 https://css-tricks.com/the-shapes-of-css/ --> CSS Shapes
+
+
+Using Javascript to Affect Property Values
+https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyValue
+https://stackoverflow.com/questions/15241915/how-to-change-css-property-using-javascript
+https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement
+https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes
