@@ -956,10 +956,38 @@ Custom Properties
             -Also remember that since :root is still technically a pseudoCLASS (even though it represents an element), it can have more classes stacked on them and used seperately in the CSS file (ie :root.light{} and :root.dark{}) to be called upon later in JS during events (similiar to how animal.mammal{} and animal.fish{} are stacked classes in CSS that can have different property values that can be toggled with JS later)
         -Extra: MDN Documents- Child Nodes- https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes
 
+
+Browser Compatibility
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-browser-compatibility
+        -LO: Understand Browser Compatibility and its History
+        -LO: Know how new CSS features make their way into browsers
+        -LO: Know how to check for compatibility
+        -Browser History
+        -What is Browser Compatibilty
+        -Browser Releases and New CSS Features
+        -When Is It Safe to Use New Features
+        -Mobile Browsers
+        -EXTRA: Remember Chrome Dev Tools for Checking Mobile Compatibility
+        -Can I Use (https://caniuse.com/)
+        -Web Browsers on iOS (https://adactio.medium.com/web-browsers-on-ios-b120a9a75cce)
+
+Frameworks and Preprocessors
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-frameworks-and-preprocessors
+        -LO: Know what a CSS framework is
+        -LO: Know some of the available frameworks
+        -LO: Know what a preprocessor is
+        -LO: Know some of the available preprocessors
+        -Frameworks Overview
+        -Disadvantages fo Frameworks
+        -Preprocessors Overview
+        -
+
         
 
 
                 
+
+
 
 
 
