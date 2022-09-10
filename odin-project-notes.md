@@ -572,7 +572,7 @@ Tables
 
 
 
-Intermediate HTML and CSS --> Intermediare CSS Concepts
+Intermediate HTML and CSS --> Intermediate CSS Concepts
 
 Default Styles
     -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-default-styles
@@ -759,10 +759,27 @@ Advanced Selectors
         -Parent and Sibling Combinators
             -The Child Combinator >
                 -Ex: main > div {}
+                    -Only selects all direct children of main (if it was main div {}, ALL divs that were children and grandchildren would have been selected). Because of this,for main > div{},  if you have:
+                     <main class="parent">
+                      <div class="child1"> 
+                        <div class="grandchild1"></div> 
+                      </div> 
+                      <div class="child2">
+                        <div class="grandchild2"></div>
+                      </div>
+                      <div class="child3">
+                      </div>
+                     </main>
+                     only child1, child2 and child3 will be selected, not grandchild1 and grandchild2. Conversly, main > div > div {} would have only selected grandchild1 and grnadchild2. main div {} would have selelected all children and grandchildren
             -The Adjacent Sibling Combinator +
                 -Ex: main + div {}
+                    -In this example, the first sibling of main that is of element div will be selected
+                    -Using the long form code example above, for .child1 + div {}, only the div with child2 would be selected because its the first sibling of child1 that is a div. child1 itself and child3 would not be selected
+                -Can only select one sibling (the first sibling that meets the criteria)
             -The General Sibling Combinator ~
                 -Ex: main ~ div {}
+                -Selects all siblings
+                -For the long form code example above,for .child1 ~ div, .child2 and .child3 would both be selected because they are ALL of the siblings of .child1 that are divs
         -Pseudo-Selectors
             -Made up of pseudo classes and pseudo elements
         -Pseudo-Classes
@@ -980,7 +997,101 @@ Frameworks and Preprocessors
         -Frameworks Overview
         -Disadvantages fo Frameworks
         -Preprocessors Overview
-        -
+        -Medium- What is a CSS Framework- https://medium.com/html-all-the-things/what-is-a-css-framework-f758ef0b1a11
+        -Smashing Magazine- CSS Framework or CSS Grid- https://www.smashingmagazine.com/2018/11/css-frameworks-css-grid/
+        -CSS Preprocessors- SASS vs LESS vs Stylus- https://www.lambdatest.com/blog/css-preprocessors-sass-vs-less-vs-stylus-with-examples/
+        -Medium- What is a CSS Pre-processor? Why should you use one?- https://medium.com/@LiliOuakninFelsen/what-is-a-css-pre-processor-why-should-you-use-one-ac3d4cd4b2c2
+        -The disadvantages of CSS preprocessors - https://adamsilver.io/blog/the-disadvantages-of-css-preprocessors/
+
+
+Intermediate HTML and CSS Course --> Grid
+
+Introduction to Grid
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-introduction-to-grid
+        -LO: Compare the basics between Flexbox and Grid
+        -LO: Describe a situation for using Grid over Flexbox
+        -A Look Back at Flex
+            -Useful for one-dimensional layouts
+            -Can be useful for two-dimensional layouts with the use of flexwrap
+        -What the Grid?
+            -Useful for two-dimensional layouts but can also be used for 1 dimensional layouts that may eventually be turned into two-dimensional
+            -Similiar to flexbox but different in key ways
+            -Can be used in conjunction with Flexbox and does not make Flexbox obsolete 
+
+Creating a Grid
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-creating-a-grid
+        -LO: Making a Grid Container
+        -LO: Defining Grid Tracks
+        -LO: Explain the difference between an implicit and explicit grid
+        -LO: Set gaps between grid cells
+        -Setting Up a Grid
+            -Grid Container
+                -Use display:grid on the container element that will hold all the grid items you will manipulated.
+                -Not all grid items need to be assigned a property
+                -Only works for DIRECT children of the grid container, not grandchildren. Remember that like flexbox, you could turn those grandchildren into individual flex containers if you wanted.
+            -Lines and Tracks in My Grid, Oh My!
+                -Use the browser developer tools to see grid information
+            -Columns and Rows
+                -grid-template-columnns and grid-template-rows are used to make columns and row tracks.
+                -Ex: 
+                    .container {
+                    display: grid;
+                    grid-template-columns: 50px 50px;
+                    grid-template-rows: 50px 50px;
+                    }
+
+                    -2 rows and 2 columns. The 2 rows are made up of 50px height grid items, and the 2 columns are made up 50px wide grid items
+
+                -Using the previous example, if you made grid-template-columns: 50px 50px 50px; then there would be 3 columns each with grid units of 50px wide.
+                -Grid Template Shortcut
+                    -grid-template: 50px 50px / 50px 50px 50px;
+                        - "rows" / "columns" is the order for the shortcut
+                        -In the example above, 2 rows with 50px high grid items and 3 columns with 50px wide grid items are made
+                        
+                - within a grid-template you can have different height and width declarations for rows and columns
+        -Explicit vs Implicit Grid
+            -Any new grid items added to the DOM on the HTML document will fit into the grid on new tracks implicityl created by CSS
+            -Size values from explicitly designed CSS grids are not inherirted by new CSS cells inserted into the grid implicitly (for example, if a predefined grid with a predefined size is created and a new cell that wasnt defined by that grid is added to a new row, that new cell in that new row will be the default CSS size, not the size you defined for rows earlier in then document)
+            -Use grid-auto-rows feature
+                -Ex: .container {
+                    display: grid;
+                    grid-template-columns: 50px 50px;
+                    grid-template-rows: 50px 50px;
+                    grid-auto-rows: 50px;
+                }
+                -any NEW row created will now have a defined width of 50px;
+            -Set "grid-auto-flow: column" and "grid-auto-columns:" to a size if you want the new cells added to 1) be added horizontally as new columns and not new rows and 2) to define the size of these new columns
+        -Gap
+            -If you make the border of each grid cell visible, you will see that the entire cell's length and width of each cell is determined by the grid template column and row size defined earlier
+            -Use "column-gap: " and "row-gap: " to determine the gaps between the rows and columns you define
+            -"grid-gap: " can also be used.
+                -If one value, the gap is for both columns and rows (ie grid-gap: 50px;)
+                -If two values, the first value defines the row-gap and the second value the column-gap (ie grid-gap: 20px 40px;)
+
+        -CSS Tricks- Complete Guide to Grid (https://css-tricks.com/snippets/css/complete-guide-grid/)
+        -Youtube-Wes Bos- CSS Grid: Implicit vs Explicit Tracks- 5 of 25 (https://www.youtube.com/watch?v=8_153Zz4YI8) 
+        -Chrome Developer Tools- Inspect CSS Grid (and Flexbox) (https://developer.chrome.com/docs/devtools/css/grid/)
+            -USE THE ABOVE LINK TO FAMILIARIZE YOURSELF WITH USING THE LAYOUT TAB AND GRID EDITOR BUTTON. The same can be done with Flexbox 
+            -With flexbox, align items and justify content can also be changed using the Flex Editor button and the layout tab
+
+Positioning Grid Elements
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-positioning-grid-elements
+        -LO: Describe the differences between tracks, lines, and cells
+        -LO: Position items by defining their start and end lines
+        -LO: Use shorthand notation
+        -Reviewing Tracks
+            -A track is essentially a row or column in a CSS grid
+            -Tracks define the total space between that defines a single row or single column in a CSS grid
+            -Defined via "grid-template rows: " and "grid-template-columns: " or shorthand "grid-template: " in CSS
+        -Lines
+            -Every track has a start line and end line
+            -grid lines are created implicitly only after rows and columns are created
+        -Cells
+        -Positioning
+        -Wrapping Up
+
+        
+
 
         
 

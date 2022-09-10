@@ -61,3 +61,8 @@ https://stackoverflow.com/questions/15241915/how-to-change-css-property-using-ja
 https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
 https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement
 https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes
+
+
+CSS Flexbox Basics
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container
