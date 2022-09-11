@@ -1086,9 +1086,88 @@ Positioning Grid Elements
         -Lines
             -Every track has a start line and end line
             -grid lines are created implicitly only after rows and columns are created
+            -For a grid with container "grid-template: 200px 200px 200px 200px / 30px 30px 30px", there are 5 row grid lines from top to bottom (lines 1,2,3,4,5) and 4 column grid lines from left to right (1,2,3,4)
         -Cells
+            -Smallest unit of measurement on a grid
+            -
         -Positioning
+            -INLINE-GRID
+                -Use "display: inline-grid" to ensure that container does not take up the entirety of the space
+            -grid-column-start, grid-column-end, grid-row-start, grid-row-end
+                -Can be applied to a specific cell (identified via class or id in HTML) to allow a cell to take up more space in the grid based on WHICH LINES IT STARTS AND ENDS ON
+                -"grid-column-start: 1; grid-column-end: 6" means that the selected cell will start from column line 1 and end on column line 6 from left to right
+            -grid-area
+                -the shorthand for grid-row-start / grid-column-start / grid-row-end / grid-column-end
+                -Ex: #living-room {
+                        grid-area: 1 / 1 / 3 / 6;
+                        }
+                    grid-row-start is 1, grid-column-start is 1, grid-row-end is 3, grid-column-end is 6
+            -grid-template-areas
+                -AN EXTREMELY POWERFUL TECHNIQUE THAT ALLOWS YOU TO MAKE DIVS ANY SIZE YOU WANT BY LISTING THE DIVS'S NAME AS GRID CELL UNITS AKIN TO A SPREADSHEET OF PIXEL SHEET
+                - Using . with spaces represent empty space in the grid-template areas
+                -Afterwards, assign the individual; grid areas of the div cells in question to be the names you gave them in the grid-template-area
+                - Ex: 
+                    display: inline-grid;
+                    grid-template: 40px 40px 40px 40px 40px / 40px 40px 40px 40px 40px;
+                    background-color: lightblue; 
+                    grid-template-areas:
+                        "living-room living-room living-room living-room living-room"
+                        "living-room living-room living-room living-room living-room"
+                        "bedroom bedroom bathroom kitchen kitchen"
+                        "bedroom bedroom bathroom kitchen kitchen"
+                        "closet closet . . ."    
+                    }
+                    .room {
+                    border: 1px solid;
+                    font-size: 50%;
+                    text-align: center;
+                    }
+                    #living-room {
+                    grid-area:  living-room;
+                    }
+                    #kitchen {
+                    grid-area: kitchen;
+                    }
+                    #bedroom {
+                    grid-area: bedroom;
+                    }
+                    #bathroom {
+                    grid-area: bathroom;
+                    }
+                    #closet {
+                    grid-area: closet;
+                    }
         -Wrapping Up
+            -
+        -Grid Layout Using Line-Based Placement (https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Line-based_Placement_with_CSS_Grid)
+            - CSS Grid Repeat (https://developer.mozilla.org/en-US/docs/Web/CSS/repeat)
+                -Used to repeat columns to fit into a grid container
+                -repeat (repeatcount, trackstorepeat)
+                -Ex: grid-template-columns: repeat(2, 60px);
+                    -Gives you 2 columns of 60px width
+                -Ex: grid-template-columns: 1fr repeat(4, 60px);
+                    - Gives you 1fr columns, and then makes 60px columns four times
+            - grid-column and grid-row shorthand for grid cells
+                - "grid-column: startline / end" and "grid-row: "start / end" 
+                    if no end is left is left in the shorthand, the column or row just spans 1 track (one row or one column)
+            - Counting Backwards
+                - Lines can be backwards in terms of numbers
+                -You can strech an item across the grid like this:
+                  -.item {
+                    grid-column: 1 / -1;
+                }  
+            -Use of span
+                - In addition to specifying the start and end lines by number, you can specify a start line and then the number of tracks (ie columns and rows) you would like the area to span.
+                -Ex: .box1 {
+                        grid-column: 1;
+                        grid-row: 1 / span 3;
+                    }
+                    - .box1 grid-column starts on grid-column-line 1 and spans just column (so it ends on grid-column-line 2 )
+                    - .box1 grid-row starts on grid-row-line 1 and spans 3 rows (so it ends grid-row-line 4 )
+        -Part 4 on Grid Properties (https://css-tricks.com/snippets/css/complete-guide-grid/#grid-properties)
+            -For reference
+
+
 
         
 
