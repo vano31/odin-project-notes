@@ -1165,7 +1165,7 @@ Positioning Grid Elements
                     - .box1 grid-column starts on grid-column-line 1 and spans just column (so it ends on grid-column-line 2 )
                     - .box1 grid-row starts on grid-row-line 1 and spans 3 rows (so it ends grid-row-line 4 )
         -Part 4 on Grid Properties (https://css-tricks.com/snippets/css/complete-guide-grid/#grid-properties)
-            -For reference
+            -For reference... 
 
 
 
