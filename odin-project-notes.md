@@ -1167,6 +1167,91 @@ Positioning Grid Elements
         -Part 4 on Grid Properties (https://css-tricks.com/snippets/css/complete-guide-grid/#grid-properties)
             -For reference... 
 
+Advanced Grid Properties
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-advanced-grid-properties
+        -LO: Create multiple grid tracks more easily using the repeat function
+        -LO: Create grid tracks using fr units instead of an explicit size
+        -LO: Set minimum, maximum, and ideal track size boundaries
+        -LO: Use auto-fit and auto-fill to create a grid with a dynamic number of rows and columns
+        -LO: Use auto-fit/auto-full along with minmax() to create responsive grids
+        -Setup
+            -resize: both
+                -For the grid container, use to make the container's dimensions resizable by clicking and dragging from the bottom right corner
+            -overflow: auto
+                -For the grid container, use to enable scrolling if we resize the containter to be smaller than our grid can accomodate
+        -Repeat
+                -Use for the CSS Grid (for grid-template-rows and grid-template-columns) 
+                -repeat (x, y)
+                    -x is number of rows/columns, y is the size of the row/column
+                    -Ex: .grid-container {
+                            grid-template-rows: repeat(2, 150px);
+                            grid-template-columns: repeat(5, 150px);
+                            }
+                -repeats can be stacked
+                    -Ex: grid-template-columns: repeat(2, 2fr) repeat (3, 1fr)
+                        -Basically makes 5 columns. 2 2fr sized columns and 3 1fr sized columns
+        -Fractional Units
+            -fr means fractional unit
+            -Used for dynamic sizing
+            -Used to divide div containers into sections
+            -Ex: .grid-container {
+                grid-template-rows: repeat (2, 1fr);
+                grid-template-columns: repeat (5, 1fr);
+            }
+                -Whatever the size of the grid container is (which is variable by resize:both), the 2 rows that are 1fr size, and 5 columns that are 1fr size
+            - For example, if you have grid-template-rows: 1fr 2fr 1fr, and the resize:both for the container, then the 2fr row would be twice as big as the 1fr rows, no matter how big or small the grid container gets
+
+        -Minimum and Maximum Track Sizes: min() and max()
+            -When minimum and maximum track sizes are not set, as the grid container shrinks, the grid items limit in size is determined by the size of the <p> or <img> element within the item
+            -However, you can use repeat() with min(), max(), and clamp() to have grid items change size dynamically based on the size fo the grid container
+                -Ex: .grid-container {
+                        grid-template-rows: repeat(2, min(200px, 50%));
+                        grid-template-columns: repeat(5, max(120px, 15%));
+                        }
+                    -For the example above, the two rows will both be the same size, but will be the smallest of either 200px of 50%, so in a way, 200px is the maximum size
+                    -For the example above, the five columns will be the same size, but will be the largest of either 120px or 15%, so in a way, 120px is the minimum size
+            -Use of percent
+                -When using percent for grid-template-rows or grid-template-column sizes, the size is the states percent of the grid container
+                -With min() and max(), it makes more sense to use percents because they can change depending on grid container size. If min() or max() are used only with staitc values, then the program is useless because it will always choose the smallest/largest one 
+                    -ex; max(50px, 100px, 70px) will ALWAYS choose 100px because all of the arguments are static values
+        -Dynamic minimum and maximum sizes (and using clamp())
+            -minmax() can only be used for CSS Grid
+            -Can only be used for the following:
+                -grid-template-columns
+                -grid-template-rows
+                -grid-auto-columns
+                -grid-auto-rows
+            -minmax(x,y) --> x represents the minimum and maximum values a grid track can be
+                -Can be static values
+                -The grid track size will change dynamically depending on size of grid container but will not get smaller than x or larger than y
+                -Ex: .grid-container {
+                        grid-template-rows: repeat(2, 1fr);
+                        grid-template-columns: repeat(5, minmax(150px, 200px));
+                        }
+            -clamp()
+                -clamp() can be used anywhere in CSS and is not limited to grid, unlike minmax()
+                -clamp(minimum-size, ideal-size, maximum-size)
+                    -the minimum-size and maximum-size ideally should be static units, while the ideal-size ideally should be dynamic units
+                    -clamp() will keep the item size at the ideal-size until the container gets below the minimum-size or above the maximum-size, in which the item size will stay at the minimum-size or maximum-size, respectfully.
+                -Ex: .grid-container {
+                        grid-template-columns: repeat(5, clamp(150px, 20%, 200px));
+                        }
+            
+        -auto-fit and auto-fill
+            -Used with repeat() function in CSS
+            -Used when you want the number of rows or columns in a grid to change depending on the size of the grid
+                -Keep in mind that in other examples in this section, the explicit amount of rows and columns for grid-template-rows and grid-template-columns was always stated, even with repeat.
+                    -ie: grid-template-columns: repeat (3, 200px)
+                -auto-fit and auto-fill do not take an explicit amount of columns or rows when used with repeat
+            -Both auto-fit and auto-fill 
+                -Can be mixed with minmax
+                    -Ex: repeat(auto-fit, minmax(150px, 1fr));
+                    -both of these functions will return “the largest possible positive integer” without the grid items overflowing their container.
+                    -auto-fit -->  If the container has enough space for more units, the units will start at MAX space to FIT into the container 
+                    -auto-fill --> If the container has enough space for more units, the units will start at MIN space to FILL container
+
+
+
 
 
         

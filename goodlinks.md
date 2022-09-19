@@ -66,3 +66,11 @@ https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes
 CSS Flexbox Basics
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container
+
+JS Arguments and Parameters for Objects in Functions (infinte parameters in functions), default values for parameters
+https://www.w3schools.com/js/js_function_parameters.asp#:~:text=Arguments%20are%20Passed%20by%20Value,change%20the%20parameter's%20original%20value.
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#using_the_arguments_object
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
+
+Python- Infinite Parameters for Python Functions 
+https://www.geeksforgeeks.org/args-kwargs-python/
