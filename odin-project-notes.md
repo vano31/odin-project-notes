@@ -1250,6 +1250,68 @@ Advanced Grid Properties
                     -auto-fit -->  If the container has enough space for more units, the units will start at MAX space to FIT into the container 
                     -auto-fill --> If the container has enough space for more units, the units will start at MIN space to FILL container
 
+Using Flexbox and Grid
+    -https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-using-flexbox-and-grid
+        -LO: Know when you might want to use Flexbox over Grid
+        -LO: Know when you might want to use Grid over Flexbox
+        -LO: Know when you might want to use the two together
+        -Content First vs Layout First Design
+            -Content-First Design: Starting with content  and working from the smallest parts outwards
+                -Good for Flexbox: Good because of the flexibility- it provides in manipulating code in one direction
+            -Layout-First Design: Developer is given an existing layout to adhere to and needs explicit placement of elements in two dimensions
+                -Good for Grid: Easier to manipulate two dimensions (rows and columns)
+            -Keep in mind that Flexbox can still be used for controlling stuff in 2 dimensions and Gird can be used to control stuff in 1 dimension
+        -Combining Flexbox and Grid
+            -Flexbox items can be grid containers and grid items can be flex items
+                -Use these two concepts in combination to allow for interesting possibilities
+                    -Ie: If a grid item becomes a flexbox parent with flex items inside of it, than you can manipulate the flex items to look a certain within the grid item, and moving the grid item around could potentially still keep those flex items within it in the same orientation
+        -Closing Opinion
+            -Do what you want
+        -CSS Tricks- Does CSS Grid Replace Flexbox?- https://css-tricks.com/css-grid-replace-flexbox/
+            - Use of flex-wrap to make "Grid like" designs
+                -Potentially Confusing: A "2D" Layout with Flexbox can be achieved by making flex : calc(100%/3) and turning flex-wrap: wrap
+                    -flex: calc(100%/3) is flex: 1 1 calc(100% of flex container width/3). Without flex-wrap, all the items will still try to squeeze into container along the main axis. However, with flex-wrap on, if 4 items are made, the first 3 will fit into the container perfectly, and since the last one cannot, it forms a new row and takes up an entire new row (see example)
+            -Useful information- Flex shorthand
+                -https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox#start_and_end_lines
+                -https://developer.mozilla.org/en-US/docs/Web/CSS/flex
+                    -/* Keyword values */
+                        flex: auto;
+                        flex: initial;
+                        flex: none;
+
+                        /* One value, unitless number: flex-grow
+                        flex-basis is then equal to 0. */
+                        flex: 2;
+
+                        /* One value, width/height: flex-basis */
+                        flex: 10em;
+                        flex: 30%;
+                        flex: min-content;
+
+                        /* Two values: flex-grow | flex-basis */
+                        flex: 1 30px;
+
+                        /* Two values: flex-grow | flex-shrink */
+                        flex: 2 2;
+
+                        /* Three values: flex-grow | flex-shrink | flex-basis */
+                        flex: 2 2 10%;
+                    -a <number>: In this case it is interpreted as flex: <number> 1 0; the flex-shrink value is assumed to be 1 and the flex-basis value is assumed to be 0.
+                    a <width>: In this case it is interpreted as flex: 1 1 <width>; the flex-grow value is assumed to be 1 and the flex-shrink value is assumed to be 1.
+                    one of the keywords: none, auto, or initial.
+
+                    -flex: initial --> the default flex box setting. Equivalent to flex: 0 1 auto. no flexwrap and items stretch to cross axis but do not grow along main axis
+                    -flex: auto --> felx: 1 1 auto. Items will stretch to fill up any extra space in container but will shrink to minimum size to fit the container
+
+                    -flex: (specific width) --> flex: 1 1 width
+
+                -https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container#using_auto_margins_for_main_axis_alignment
+                -https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis
+        -CSS Grid vs Flexbox: Which Should You Use and When? - https://webdesign.tutsplus.com/articles/flexbox-vs-css-grid-which-should-you-use--cms-30184
+            - Same shit as earlier
+
+
+
 
 
 

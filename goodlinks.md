@@ -74,3 +74,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest
 
 Python- Infinite Parameters for Python Functions 
 https://www.geeksforgeeks.org/args-kwargs-python/
+
+Use of the * universal selector in CSS
+https://www.geeksforgeeks.org/what-is-the-use-of-asterisk-selector-in-css/#:~:text=The%20asterisk%20(*)%20is%20known,the%20elements%20on%20the%20page.
