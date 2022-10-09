@@ -80,3 +80,13 @@ https://www.geeksforgeeks.org/what-is-the-use-of-asterisk-selector-in-css/#:~:te
 
 Z-index and stack order of items on CSS 
 https://www.w3schools.com/cssref/pr_pos_z-index.asp
+
+Closures in Javascript and their Use Cases (ie Factory Functions)
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+    -Remember that variables can hold functions
+
+
+Switches in Javascript (includung defaults, fall-through, and using/not using breaks)
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
+
+

@@ -1311,6 +1311,38 @@ Using Flexbox and Grid
             - Same shit as earlier
 
 
+Javascript --> Introduction
+
+How this Course Will Work
+    -https://www.theodinproject.com/lessons/node-path-javascript-how-this-course-will-work
+    -Intro
+    -The Path
+    -Format
+
+A Quick Review
+    -https://www.theodinproject.com/lessons/node-path-javascript-a-quick-review
+        -Introduction
+            -Review Javascript from the Foundations Course
+        -Review
+            -Reference Review
+                -MDN Javascript Basics Course -https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics
+                -LearnXinY Javascript -https://learnxinyminutes.com/docs/javascript/
+                    - Peforming basic arithmetic with decimals can be problematic because the numbers may not fully match up (ie 0.1 + 0.2 = 0.30000000004). The best way to fix this is to use whole numbers when doing basic artihmetic and convert to decimals later
+                    -For arthmetic, precedence is enforced with parenthesis (ie: (1 + 3) * 2)
+                    - Infinity = 1/0, -Infinity = -1/0, NaN = 0/0
+                    -null indicates a deliberate non value, while undefined indicates that a value is currently not present
+                    -false, null, undefined, NaN, 0, and "" are falsy. Everything else is truthy
+                    -Variable declaration can occur on the same line using commas:
+                        - let x = 2, let y = 7, let nen = 24;
+                    -Remember that variables can hold functions
+                    -Variables can be shortcircutied with && of || to set default values
+                        -var name = otherName || "default";
+
+            -Practice Review
+                -Exercism - http://exercism.io/
+                -Codewars - https://www.codewars.com/
+        -JQuery?
+
 
 
 
