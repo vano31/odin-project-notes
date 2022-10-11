@@ -1337,6 +1337,32 @@ A Quick Review
                     -Remember that variables can hold functions
                     -Variables can be shortcircutied with && of || to set default values
                         -var name = otherName || "default";
+                    - setTimeout(function, delayinmilliseconds, functionparameter1, functionparameter2...) --> Used for making countdown for function execution in milliseconds
+                    - setInterval() is similar to setTimeout() except it repeats a code after the interval passes
+                    -Closures
+                        - If a function is defined innside another function, the inner function has access to all the outer function's variables, even if the outer function closes
+                        -Closures can be used to make factory functionss (functions that are stored in variables that produce more functions) because if a function is stored in a variable, calling that variable again with new parameters allows you to access the inner function
+                        -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+                        - Example
+                            -function makeAdder(x) {
+                            return function (y) {
+                                return x + y;
+                            };
+                            }
+
+                            const add5 = makeAdder(5);
+                            const add10 = makeAdder(10);
+
+                            console.log(add5(2)); // 7
+                            console.log(add10(2)); // 12
+                    -More About Objects, Constructors, 
+                        
+                        -Using call(), apply() and bind() to use the "this" keyword to have an object's mehtod be used on a different object than the object where the method was invoked
+                            -
+                        -Two ways to create objects in Javascript
+                            -Using key/value pairs
+                            -Using functions and parameters (since even functions in JS are objects, the parameters of a function are that function object's keys, and whatever value you pass to those parameters when you invoke the function again becomes the values of those function object keys)
+
 
             -Practice Review
                 -Exercism - http://exercism.io/

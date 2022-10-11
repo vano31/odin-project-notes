@@ -90,3 +90,7 @@ Switches in Javascript (includung defaults, fall-through, and using/not using br
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
 
 
+Use of call(), apply() and bind() to change the object the keyword 'this' is applied to in Javascript
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind
