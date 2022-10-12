@@ -1355,13 +1355,57 @@ A Quick Review
 
                             console.log(add5(2)); // 7
                             console.log(add10(2)); // 12
-                    -More About Objects, Constructors, 
+                    - More About Objects, Constructors, 
                         
-                        -Using call(), apply() and bind() to use the "this" keyword to have an object's mehtod be used on a different object than the object where the method was invoked
-                            -
-                        -Two ways to create objects in Javascript
-                            -Using key/value pairs
-                            -Using functions and parameters (since even functions in JS are objects, the parameters of a function are that function object's keys, and whatever value you pass to those parameters when you invoke the function again becomes the values of those function object keys)
+                        - Using call(), apply() and bind() to use the "this" keyword to have an object's mehtod be used on a different object than the object where the method was invoked
+                            - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
+                            - https://www.freecodecamp.org/news/understand-call-apply-and-bind-in-javascript-with-examples/
+                                - call ()
+                                    - func.call(thisObj, args1, args2, ...)
+                                        -func is a function that needs to be invoked with a different this object. thisObj is an object or a value that needs to be replaced with the this keyword present inside the function func. args1, args2 are arguments that are passed to the invoking function with the changed this object.
+                                    - Example 1: 
+                                        function Car(type, fuelType){
+                                            this.type = type;
+                                            this.fuelType = fuelType;
+                                        }
+
+                                        function setBrand(brand){
+                                            Car.call(this, "convertible", "petrol");
+                                            this.brand = brand;
+                                            console.log(`Car details = `, this);
+
+                                            In this example, the object Car is first established via function creation (remember that functions are objects in javascript and because of this, a function's parameters can then become those function object's keys, and the values inserted into the parameters when the function is called becomes the function object's values for those keys).
+
+                                            For function setBrand, the Car function object is invoked again, but this time, since you are trying to establish a larger function object setBrand that contains the function object Car, you want the "this" in the Car object function to refer to setBrand instead, so that Car's paremeter/key-values refer to the larger object Car
+                                            
+
+
+                                    - Example 2:
+
+                                        myObj = {
+                                            myString: "Hello world!",
+                                            myFunc: function(){
+                                                return this.myString;
+                                            }
+
+                                        var anotherFunc = function(s){
+                                            return this.myString + s;
+                                        };
+                                        anotherFunc.call(myObj, " And Hello Moon!");
+
+                                        Results in --> // = "Hello World! And Hello Moon!" Because in the example, the function "anotherFunc(s)" returns, instead of returning this.myString + s, which refers to nothing, returns myObj.mystring + s. " And Hello Moon!" replaces s.
+
+                                - apply() is similiar to call() but is used to pass an array
+                                - bind() is similiar to 
+
+                        - Two ways to create objects in Javascript and the importance of Functions as OBJECTS and VARIABLES that can still hold parameters
+                            - Remember:  FUNCTIONS CAN BE HELD IN VARIABLES AND CAN BE CALLED S VARIABLES LATER WITH PARAMETERS, which allows you to do closures and factory functions
+                                - 
+                            - Creating Objects in JS Using key/value pairs
+                                -
+                            - Creating Objects in JS (since FUNCTIONS CAN BE OBJECTS) Using functions and parameters (since even functions in JS are objects, the parameters of a function are that function object's keys, and whatever value you pass to those parameters when you invoke the function again becomes the values of those function object keys)
+                                -
+
 
 
             -Practice Review
