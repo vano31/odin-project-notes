@@ -1355,7 +1355,25 @@ A Quick Review
 
                             console.log(add5(2)); // 7
                             console.log(add10(2)); // 12
-                    - More About Objects, Constructors, 
+                    - More About Objects, Constructors, and Prototypes
+                        - The keyword "this"
+                            -Remember that objects can contain functions. Functions associated with certain objects are called methods
+                                -Example: var myObj = {
+                                    myFunc: function() {
+                                        return "Hello World!";
+                                    }
+                                };
+                                myObj.myFunc(); // returns "Hello World!"
+                            
+                            - If your object contains a function that refers to a specific key-value pair within that same object, use the "this" keyword, which allows you to refer to a specific key of the same object this function belongs to
+                                - Example: var myObj = {
+                                    myString: "Hello World";
+                                    myFunc: function() {
+                                        return this.myString;
+                                    }
+                                }
+                                myObj.myFunc(); // returns "Hello World!"
+
                         
                         - Using call(), apply() and bind() to use the "this" keyword to have an object's mehtod be used on a different object than the object where the method was invoked
                             - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
@@ -1395,16 +1413,71 @@ A Quick Review
 
                                         Results in --> // = "Hello World! And Hello Moon!" Because in the example, the function "anotherFunc(s)" returns, instead of returning this.myString + s, which refers to nothing, returns myObj.mystring + s. " And Hello Moon!" replaces s.
 
+                                    IN A NUTSHELL, USE CALL() WHENEVER YOU WANT TO EITHER 1) REFER TO A DIFFERENT OBJECT'S KEY-VALUE PAIR IN A NEW FUNCTION THAT REQUIRES A KEY TO PERFORM A FUNCTION (replacing this.action with differentobject.action) and 2) WHENEVER YOU WANT A NEW FUNCTION-OBJECT TO INHERIT ANOTHER OBJECT'S PARAMATERS/KEY-VALUE PAIRINGS WITHOUT REDEFINING IT WITHIN THAT NEW FUNCTION-OBJECT
+
+
                                 - apply() is similiar to call() but is used to pass an array
-                                - bind() is similiar to 
+                                - bind() is similiar to call() but permenantly allows the change in the object being used to be applied permanently (similar to closures)
+                                    - var product = function(a, b){ return a * b; };
+                                      var doubler = product.bind(this, 2);
+                                      doubler(8); // = 16
 
                         - Two ways to create objects in Javascript and the importance of Functions as OBJECTS and VARIABLES that can still hold parameters
-                            - Remember:  FUNCTIONS CAN BE HELD IN VARIABLES AND CAN BE CALLED S VARIABLES LATER WITH PARAMETERS, which allows you to do closures and factory functions
-                                - 
+                            - Remember:  FUNCTIONS CAN BE HELD IN VARIABLES AND CAN BE CALLED AS VARIABLES LATER WITH PARAMETERS, which allows you to do closures and factory functions
+                                - Example
+                                    - let adder = function(x, y) {
+                                        return x + y;
+                                    }
+                                      let add2 = adder(2); //the variable add2 stores adder where x is 2. y is empty but can be filled if add2 is ever called with a new parameter filling in for y, since inner functions in JS can access all vaiables and parameters available in the outer function surrounding it
+                                      let add7 = adder(7);
+                                     console.log(add2(4)); // returns 6
+                                     console.log(add7(3)); // returns 10
                             - Creating Objects in JS Using key/value pairs
-                                -
+                                - let car = {
+                                    power: "electric";
+                                    steering: "automatic";
+                                }
                             - Creating Objects in JS (since FUNCTIONS CAN BE OBJECTS) Using functions and parameters (since even functions in JS are objects, the parameters of a function are that function object's keys, and whatever value you pass to those parameters when you invoke the function again becomes the values of those function object keys)
-                                -
+                                - let car = function(power, steering) {
+                                    this.power = power;
+                                    this.steering = steering;
+
+                                }
+                                  let Tesla = car("electric", "automatic");
+                                  console.log(Tesla.power); // returns "electric"
+                                  console.log(Tesla.steering);// returns "automatic"
+
+                        - The "new" keyword and "prototype" for Object Construction
+                            -The "New" Keyword
+                                -When you assign a function-object to a variable with a "new" keyword, that variable becomes an object that holds all the key-value pairings of the function-object that it was called with. Any key-value pairing made explicit through the "this" keyword in the original function-object is now held by the newly created variable, and that variable becomes a new object with all those key-value pairings.
+                                -Function-objects designed to have their key-value pairings inherited by new variable objects via the "new" keyword are called CONSTRUCTORS
+                                    - Example: var myConstructor = function(num1, num2) {
+                                        this.num1 = num1;
+                                        this.num2 = num2;
+                                    }
+                                    var newObj = new myConstructor(4,12);
+                                    console.log(newObj.num2) // returns 12
+                            - __proto__ (Deprecated--> DO NOT USE)
+                                -RETURN LATER- STUDY THIS LATER IN THE ODIN PROJECT IN REQUIRED SECTION
+                                It seems that __proto__ is the pointer to the location of an object's prototype
+                            - Object.prototype
+                                -RETURN LATER- STUDY THIS LATER IN THE ODIN PROJECT IN REQUIRED SECTION
+                                It seems that Object.prototype allows you to access the prototype of Object and add key-value pairs as well as methods to the prototype of an object so that all new objects made from that property have access to its prototype's new values
+                                    -https://www.w3schools.com/js/js_object_prototypes.asp
+                                    -Example: function sibling(first, last) {
+                                        this.firstname = first;
+                                        this.lastname = last;
+                                    }
+
+                                    let mySister = new sibling("Victory", "Anosike");
+                                    let myBrother = new sibling("Ugonna", "Anosike");
+                                    mySister.firstname // returns "Victory"
+                                    myBrother.lastname // returns "Anosike"
+
+                                    sibling.prototype.ethnicity = "Nigerian";
+
+                                    mySister.ethnicity // returns "Nigerian"
+                                    myBrother.ethnicity // returns "Nigerian"
 
 
 

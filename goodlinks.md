@@ -94,3 +94,13 @@ Use of call(), apply() and bind() to change the object the keyword 'this' is app
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
 https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind
+
+Object Constructors and the "This" keyword in Javascript
+https://www.w3schools.com/js/js_object_constructors.asp
+
+__proto__ vs Object.getPrototypeOf(obj) and Object.setPrototypeOf(obj, newprootype) vs .prototype
+https://medium.com/@eamonocallaghan/prototype-vs-proto-vs-prototype-in-javascript-6758cadcbae8
+https://www.w3schools.com/js/js_object_prototypes.asp
+
+Stack Overflow- Explaining the Difference Between __proto__ and Object.prototype
+https://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript#:~:text=prototype%20is%20a%20property%20of,standards%20provide%20an%20equivalent%20Object.
