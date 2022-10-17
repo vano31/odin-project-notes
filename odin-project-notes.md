@@ -378,6 +378,103 @@ Javascript Fundamentals Part 5
                             for (let code in codes) {
                             alert( +code ); // 49, 41, 44, 1
                             }
+        -Intermediate/Advanced Array Magic
+            - Wes Bos- Javascript Array Cardio Practice- Day 1- https://www.youtube.com/watch?v=HB1ZC7czKRs
+                -console.table()
+                    -Useful for displaying array/object results in a table within the console
+                -Array.prototype.filter()
+                    let newArray = oldArray.filter(x), where x is a boolean function. Anything within the array that comes out "truthy" through the x function wihtin .filter() will be put into newArray
+                -Array.prototype.map()
+                    -let newArray = oldArray.map(x), where x is a function that creates an output based on the different oldArray items acting as inputs. newArray will contain all of the output as an array
+                -Array.prototype.sort()
+                    -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+                    -let newArray = oldArray.sort(x(a,b)), where x is a function that compares two parameters a and b, and a and b are two subsequent items within oldArray. For oldArray, a is the first item, and b is the next item after a. 
+                    -When comparing a and b in order, return values are either -1, 0, or 1. If, when comparing first item a and next item b, and the return value is -1, then a is placed first into newArray, followed by b. If the return value is 1, then b is placed first, followed by a into newArray. If the return value is 0, then the order of a and b in oldArray is preserved in newArray.
+                    -Essentially, .sort(x(a,b)) treats the first item in oldArray as "a" and the next item as "b", and this continues as the function x goes through the entire oldArray. Whichever parameter (a or b) that has the lowest number will appear first in the array order of newArray.
+                    -Can also be used for sorting into alphabetical order. When used in its default setting, Array.prototype.sort() turns all Array items into strings and arranges it in alphabetical order. This can cause nonstrings to be ordered incorrectly if the function is not made correctly because numbers when converted into strings do not preserve number order when using the .sort() function naturally
+                -Array.prototype.reduce()
+                    -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+                    - Basically a for loop but for arrays. Comes packaged with a built in counter
+                    -const array1 = [1, 2, 3, 4];
+                     const initialValue = 0;
+                     const sumWithInitial = array1.reduce((previousValue, currentValue) => {return previousValue + currentValue}, initialValue);
+                     console.log(sumWithInitial);
+                     // expected output: 10
+                     -In the above example, sumWithInitial is a variable that will hold the sum of all the variables once the .reduce() method is completed. The function wihitn the .reduce() method holds two parameters, previousValue and currentValue. this function will return the sum of previousValue (which will always be the next item in the array) and currentValue as the function repeats itself through the entire array. 
+                     -However, the previousValue must have have SOME value or else the function will not run (similar to how, in for loops, the initial value of x must start somewhere, usually 0). This is why after the function's code is written, a comma and the value you want the previousValue variable to start off as must be included
+                     
+
+                -12:45 - flexibility of .querySelector (does not need to be just on document.querySelector)
+                    -ie--> Assume an html element <div class="metroid"> exists. Suppose within this element are multiple <li> and you want to target all the li within the div withe class "metroid"
+                     let metroid = document.querySelector('.metroid');
+                     let lists = metroid.querySelectorAll('li');
+                     Rather than use document.querySelector, which looks for html elements in the entire document, you can use any other html element to replace "document", so long as thast html element has been turned into a javascript variable, and the html elements you want to isolate exist within that javascript variable
+                -14:40 Turning Nodelists of HTML elements into Arrays
+                    - .querySelectorAll() creates a Nodelist from all of the selected elements. Although similiar to arrays THEY ARE NOT ARRAYS AND CAN NOT DO ALL ARRAY METHODS. IT IS BETTER TO TURN THE NODELIST INTO AN ARRAY
+                        -Array.from() --> https://www.w3schools.com/jsref/jsref_from.asp
+                            -Returns an array from an object with a length property or an iterable object (like a NODELIST)
+                            -let newArray = Array.from("ABCD")
+                            -console.log(newArray) // ["A", "B", "C", "D"]
+
+                        -... Spread Operator --> https://www.w3schools.com/react/react_es6_spread.asp
+                            -The Javascript Spread Operator (...) allows you to quickly copy all or part of an existing array or object into another array or object
+                            -ie. const numbersOne = [1, 2, 3];
+                             const numbersTwo = [4, 5, 6];
+                             let numbersCombined = [...numbersOne, ...numbersTwo];
+                             console.log(numbersCombined) // [1, 2, 3, 4, 5, 6]
+                            
+                    -newArray = Array.from(element.querySelectorAll('div')); this can work
+                    -newArray = [...element.querySelectorAll('div')]; this can work
+                -16:11 The split function (String.prototype.split)
+                    -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split
+                    -Cuts a string into individual pieces based on parameters between parts of the string that you define, and puts those pieces of the string into items in an array, and returns the array
+                    -ie. const str = 'I am speed.'
+                        const words = str.split(' ');
+                        console.log(words); //['I', 'am', 'speed']
+                -18:17- Variable Destructuring- https://javascript.info/destructuring-assignment
+                    -Allows you to unpack arrays, objects, or iterables into a bunch of variables at the same time
+                    -Does not destroy the original array
+                    ie. let arr = ['John', 'Smith']
+                    const [first, last] = arr;
+                    console.log(first); // 'John'
+                    console.log(last); // 'Smith'
+
+                    -Using , to skip items in the Iterable
+                        - let [firstName, , title] = ['Julius', 'Caesar', 'Consul']
+                        console.log(title) // 'Consul' 
+                            -
+                    -Using with .split() and 'Assignables' Like Object Properties
+                        -You can use .split and have the array items created from be assigned to variables via Variable Destructuring
+                        -Anything that can be assigned (ie an object property) can be made into variables using Variable Destructuring
+                            -let user = {}
+                            -[user.name, user.surname] = 'John Smith'.split('');
+                            -console.log(user.surname) // 'Smith'
+                    -Using the rest '...'
+                        -let [game, ...extraNames] = ['Street Fighter', '5', 'Champion', 'Edition'];
+                        -console.log(game); // 'Street Figher'
+                        -console.log(extraNames); // ['5', 'Champion', 'Edition']
+                    -Can also be used with other iterables such as objects (skip and return for later)
+
+                   
+
+            - Wes Bos- Javascript Array Cardio Practice- Day 2- https://www.youtube.com/watch?v=QNmRfyNg1lw
+                -Array.prototype.some() --> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+                    -Will check if at least one thing in your array is what you are looking for
+                    -const answer = oldArray.some(x(item) {});// x is a boolean function that returns true or false.
+                        -In the above example, if oldArray has at least one item that fulfills the requirements of the x boolean function, than "answer" will equal true, otherwise it equals false.
+
+                -Array.prototype.every()--> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+                    -Same as .some() but needs all array items to fulfill the criteria
+                
+                -Array.prototype.find() --> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+                    -Returns the FIRST item in the array that fulfills a criteria for boolean function x. if no item in the array exists, undefined is returned
+                    -let firstCorrectItem = oldArray.find(x())
+
+                -Array.prototype.findIndex() --> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+
+                -[...SPREADS]
+
+
 
 
 
@@ -1485,6 +1582,35 @@ A Quick Review
                 -Exercism - http://exercism.io/
                 -Codewars - https://www.codewars.com/
         -JQuery?
+            -JQuery not as popular anymore because vanilla Javascript can now do alot (DOM Manipulation, AJAX Calls, etc)
+
+Organizing Your Javascript Code Introduction
+    -https://www.theodinproject.com/lessons/node-path-javascript-organizing-your-javascript-code-introduction
+        -Organizing Your Code
+            -JS being really forgiving makes it easy to have code written in a very disorganized way 
+        -Different Javascript Code Organization Patterns
+            - Plain Old Javascript Objects and Object Constructors
+            - Factory Functions and the Module Pattern
+            - Classes
+            - ES6 Modules
+        - You Don't Know Javascript
+            - https://github.com/getify/You-Dont-Know-JS/tree/1st-ed#titles
+            - Use to learn everything you can about Javascript's In's and Out's
+
+Objects and Object Constructors
+    -https://www.theodinproject.com/lessons/node-path-javascript-objects-and-object-constructors
+        -LO: How to Write an Object Constructor and Institiate the Object
+        -LO: Describe what a prototype is and how it can be used
+        -LO: Explain prototypal inheritance
+        -LO: Understand the Basic do's and don'ts of prototypal inheritance
+        -LO: Explain what Object.create does
+        -LO: Explain what the "this" keyword is
+        -Introduction
+        - Objects as a Design Pattern
+        - Object Constructors
+        - The Prototype
+            - Recommended Method for Prototypal Inheritance
+
 
 
 

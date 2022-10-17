@@ -104,3 +104,25 @@ https://www.w3schools.com/js/js_object_prototypes.asp
 
 Stack Overflow- Explaining the Difference Between __proto__ and Object.prototype
 https://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript#:~:text=prototype%20is%20a%20property%20of,standards%20provide%20an%20equivalent%20Object.
+
+You Don't Know Javascript
+https://github.com/getify/You-Dont-Know-JS/tree/1st-ed#titles
+
+Intermediate Array Methods
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+
+Turning objects (like Nodelists from .querySelectorAll()) into Arrays via Array.from() or the Spread (...) operator
+https://www.w3schools.com/jsref/jsref_from.asp
+https://www.w3schools.com/react/react_es6_spread.asp
+
+String.prototype.split() (Used to make an array out of a string based on cutting it into defined pieces)
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split
+
+Javascript- Variable Destructuring Assignment- Allows you to unpack arrays, objects, or iterables into several variables simultaneously
+https://javascript.info/destructuring-assignment
