@@ -126,3 +126,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 Javascript- Variable Destructuring Assignment- Allows you to unpack arrays, objects, or iterables into several variables simultaneously
 https://javascript.info/destructuring-assignment
+
+Use Cases for Dot vs Bracket Notation in Javascript for Objects
+https://javascript.plainenglish.io/javascript-dot-notation-vs-bracket-notation-which-to-use-when-e24117e44d71

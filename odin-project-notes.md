@@ -1613,6 +1613,9 @@ Objects and Object Constructors
 
 
 
+//the checked attribute for radios are a boolean value. 
+
+
 
 
 
