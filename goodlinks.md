@@ -129,3 +129,32 @@ https://javascript.info/destructuring-assignment
 
 Use Cases for Dot vs Bracket Notation in Javascript for Objects
 https://javascript.plainenglish.io/javascript-dot-notation-vs-bracket-notation-which-to-use-when-e24117e44d71
+
+Object.defineProperty
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
+
+
+Javascript- Computed Properties -Use to make expressions into object property names
+https://www.javascripttutorial.net/es6/javascript-computed-property/
+
+Sub Classing With Super and Extend
+(https://www.w3schools.com/jsref/jsref_class_super.asp)
+
+Mxins- Mixed Classes and Mixed Inheritance in Javascript
+https://javascript.info/mixins
+
+What are npm, yarn, babel, and webpack?
+https://medium.com/front-end-weekly/what-are-npm-yarn-babel-and-webpack-and-how-to-properly-use-them-d835a758f987
+
+The different Instances of "this" in Javascript, as well as apply, call, and bind
+https://www.vojtechruzicka.com/javascript-this-keyword/
+
+Destructuring Assignment
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+    -Works differently for arrays compared to objects
+
+Thinking in React- React Developers' advice for the thought process of building applications in React
+https://reactjs.org/docs/thinking-in-react.html
+
+React Lifestyle Methods CheatSheet
+https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/

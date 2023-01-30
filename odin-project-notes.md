@@ -1619,6 +1619,609 @@ Objects and Object Constructors
 
 
 
+Classes
+    -https://www.theodinproject.com/lessons/node-path-javascript-classes
+        -LO: Describe the Pros and Cons of using classes in Javascript
+        -LO: Briefly discuss how Javascript's object creation differs from a language like Ruby or Java
+        -LO: Explain the differences between an object constructor and a class
+        -LO: Explain what "getters" and "setters" are
+        -LO: Understand what computed names and class fields are
+        -LO: Use Inheritance with class
+        -LO: Understand why composition is generally preferred to inheritance
+        -Introduction
+            -ES6 introduced the class keyword in Javascript, which didn't traditionally have one
+            -There is debate about whether constructors are better than classes (personally I like using factory functions and the module pattern)
+        -Property Getters and Setters (https://javascript.info/property-accessors)
+            -Getters and Setters
+                -Acessor properties are esentially functions that data properties without being methods. instead of adding a method to an object to invoke a function, you add a an accessor property (ie get fullname() ) to an object, and to do that function, you simply call object.fullname. (if it was a method, it would be object.fullname();)
+                -Getter can not be used to assign property values to something else. Only setters can do that (user.fullname = `JK Sim' returns error if get fullname(){} is a getter. if set fullname(value) {} is the accessor property, then user.fullname will return `JK Sim` )
+
+                -Variable Destructuring Assignment
+                    -
+                    set fullName(value) {
+                        [this.name, this.surname] = value.split(" ");
+                    }
+                    };
+
+                    // set fullName is executed with the given value.
+                    user.fullName = "Alice Cooper";
+
+                    alert(user.name); // Alice
+                    alert(user.surname); // Cooper
+            -Accessor Descriptors
+                - get is a function with no arguments. set has at least one argument
+                - Use of Object.defineProperty (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+                    -Object.defineProperty(object1, 'property1', {
+                        value: 42,
+                        writable: false
+                        });
+
+                        object1.property1 = 77;
+                        // throws an error in strict mode
+
+                        console.log(object1.property1);
+                        // expected output: 42
+                -Object.defineProperty can be combined with getters and setters
+            -Smarter Getters/Setters
+                -Can be used to get better control over object properties (ie age requirement)
+                -let user = {
+                    get name() {
+                        return this._name;
+                    },
+
+                    set name(value) {
+                        if (value.length < 4) {
+                        alert("Name is too short, need at least 4 characters");
+                        return;
+                        }
+                        this._name = value;
+                    }
+                    };
+
+                    user.name = "Pete";
+                    alert(user.name); // Pete
+
+                    user.name = ""; // Name is too short...
+
+            -Using for compatibility
+                -Can be used for refactoring existing code without chagning too much
+
+        - Class Basic Syntax (https://javascript.info/class)
+            -The "class" syntax
+                class MyClass {
+                // class methods
+                constructor(parameter1, parameter2) { ... }
+                method1() { ... }
+                method2() { ... }
+                method3() { ... }
+                ...
+                }
+                let object = new MyClass(parameter1, parameter2)
+            -What is a class?
+                -A function that acts similiar to object constructor but has "class" as a designation
+            -Not just a syntactic sugar
+            -Class Expression
+                -Can be defined within another expression
+                    let User = class {
+                    sayHi() {
+                        alert("Hello");
+                    }
+                    };
+                - classes can be given names and can be invoked in functions
+                - You can also create new classes by creating functions that EXPLICITYL create new classes (ie factory class creation)
+
+                    function makeNewClass (phrase) {
+                        //declare a class and return it
+                        return class {
+                            sayHi() {
+                                alert(phrase)
+                            }
+                        }
+                    }
+                    let person = makeNewClass("Bazinga") //Now variable person holds a class that alerts the phrase bazinga
+                    let JimParsons = new person() //now JimParsons variable is an object of class person
+                    JimParsons.sayHi();
+            -Getters/Setters
+                -classes can hold getters and setters
+            -Computed Names
+                -Javascript- Computed Property Names (https://www.javascripttutorial.net/es6/javascript-computed-property/)
+                    -Use to make Object Property Names into Expressions
+                    -Anything within the [] gets evaluated and can be used as property values or methods
+                    let propName = 'c';
+                    const rank = {
+                    a: 1,
+                    b: 2,
+                    [propName]: 3,
+                    };
+                    console.log(rank.c); // 3
+
+                -class User {
+                    ['say' + 'Hi']() {
+                        alert("Hello");
+                    }
+
+                    }
+
+                    new User().sayHi();
+            -Class Fields
+                -Allows you to add normal properties to classes outside of the class constructor
+                -These properties are not part of the object prototype
+            -Making Bound Methods with Class Fields
+                -Use bound methods 
+                -ie: click = () => {
+                        alert(this.value);
+                    })
+                -Do this so that the context of "this" is not removed when using class methods in parameters of a different function (remember that if a method is used as a parameter in a different function, than the context of this no longer works)
+                -class Button {
+                constructor(value) {
+                    this.value = value;
+                }
+                click = () => {
+                    alert(this.value);
+                }
+                }
+
+                let button = new Button("hello");
+
+                setTimeout(button.click, 1000); // hello
+        -Mozilla- Defining Class (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+            -Defining Classes
+                -Either through class expression or class declaration 
+                -Hoisting- Classes MUST BE DEFINED EARLIER IN THE SHEET BEFORE THEY CAN BE CONSTRUCTED
+            -Class Body and Method Definitions
+                -Code written within curly brackets for class are in strict mode (stricter syntax)
+                -Static Methods and Properties (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static)
+                    -"static" keyword can be put in front of class properties and methods. Static properties and methods cannot be called during obijects that were class instances. They can only be called with the class;
+                    -class Point {
+                        constructor(x, y) {
+                            this.x = x;
+                            this.y = y;
+                        }
+
+                        static displayName = "Point";
+                        static distance(a, b) {
+                            const dx = a.x - b.x;
+                            const dy = a.y - b.y;
+
+                            return Math.hypot(dx, dy);
+                        }
+                        }
+                        p1.displayName; // undefined 
+                        p1.distance;    // undefined
+                        console.log(Point.displayName);      // "Point"
+                        console.log(Point.distance(p1, p2)); // 7.0710678118654755
+                        -Probably useful for keeping some properties and methods "private" and noty messed with by other functions (similiar to how closures are dealt with)
+                -When a static or prototype method is called without a value for this, such as by assigning the method to a variable and then calling it, the this value will be undefined inside the method (because the method will be seperated from the object its called from, similiar to when using a method as a parameter (see setTimeout() examples in "The Gentle Explanation of This in Javascript" article)
+            -Sub Classing with Extends
+                -extends keyword is used to create a class as a child of another class
+                -super keyword must be used to call the constructor of the parent class and access the paren's properties and methods (https://www.w3schools.com/jsref/jsref_class_super.asp)
+                -super(parentClassParameter) must be called WITHIN the constructor of the extended class whenever you intend to reuse parameters from the parent class when instantiating a new object from the child class
+                    -class Animal {
+                    constructor(name) {
+                        this.name = name;
+                    }
+
+                    speak() {
+                        console.log(`${this.name} makes a noise.`);
+                    }
+                    }
+
+                    class Dog extends Animal {
+                    constructor(name) {
+                        super(name); // call the super class constructor and pass in the name parameter
+                    }
+
+                    speak() {
+                        console.log(`${this.name} barks.`);
+                    }
+                    }
+
+                    const d = new Dog('Mitzie');
+                    d.speak(); // Mitzie barks.
+                -extends and super can also be used to make classes out of prototypal-inheritance based on object declaration functional notation
+                
+            -Species
+                -Not sure tbh
+            -Super class calls with super
+                - use super keyword to reuse parent class methods
+                -class Cat {
+                constructor(name) {
+                    this.name = name;
+                }
+
+                speak() {
+                    console.log(`${this.name} makes a noise.`);
+                }
+                }
+
+                class Lion extends Cat {
+                speak() {
+                    super.speak();
+                    console.log(`${this.name} roars.`);
+                }
+                }
+            -Mix-ins
+                -Javascript.info (https://javascript.info/mixins)
+                    -A class that contains methods for other classes so that objects/classes can infhert multiple methods from different classes
+                    -Class extensions can only be done for oner class, making mixins necessary
+            -Re-running a class definition
+        -Class Syntax vs Prototypal Inheritacne Syntax (https://rajaraodv.medium.com/is-class-in-es6-the-new-bad-part-6c4e6fe1ee65)
+            -jkkk
+
+ES6 Modules
+    -https://www.theodinproject.com/lessons/node-path-javascript-es6-modules
+        -LO: npm, npm init, package.json, Javascript module bundlers (ie webpack)
+        -LO: Entry/output, development dependancy, transpiling code, task runner
+        -LO: npm automation script, the benefits of writing code in modules, "named" exports, "default" exports
+        -The History of Javascript
+        -npm
+        -Yarn?
+        -Webpack
+        -ES6 Modules (finally!)
+        -The History of Javascript (https://peterxjang.com/blog/modern-javascript-explained-for-dinosaurs.html)
+            -Order of Improvement of Javascript from Beginning to most current
+                -Add .js file to script in html
+                -Download the javascript library directly from the website and insert into script in html
+                -Use npm to download a library package (ie module) using the command line, along with package.json file to account for future updates and file dependencies, attach node manager file to script
+                -Use webpacks (or other module bundlers) to deal with multiple module libraries at the same time and link them to a file in the script for html (this file is called dist/...js) while also being able to interact with files downloaded on the server side of the website
+            -npm
+                -Command line tool that gives you access to plugins, libraries and tools for javascript
+                -About npm (https://docs.npmjs.com/about-npm)
+                -How to install packages with npm (https://docs.npmjs.com/downloading-and-installing-packages-locally)
+                -npm and package.json (https://docs.npmjs.com/creating-a-package-json-file)
+                -Development Dependencies (https://dev.to/moimikey/demystifying-devdependencies-and-dependencies-5ege)
+                    -
+                -npm official documentation (https://docs.npmjs.com/)
+
+            -Yarn
+                -https://yarnpkg.com/en/
+            -Webpack
+                -Website  --> https://webpack.js.org/
+                -Tutorial
+                    -Extra Explanation for Myself: https://medium.com/front-end-weekly/what-are-npm-yarn-babel-and-webpack-and-how-to-properly-use-them-d835a758f987
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Grind Mode Notes (Javascript)
+- ES6
+    - _.join?
+    - What is lodash?- functional programming library?
+    - What is difference between import and import default
+    - Import export vs webpack (why is webpack necessary?)
+    - Use <script type="module">
+- Webpack
+    -Output management? Dynamically managing bundles?
+    - Difference between --watch function and other types of watching for source mapping
+- OOP Principles
+    -Difference between the different solid principles
+    - What is polymorphism?- Are they related to mixins?
+    - Usefulness of making sure that static functions within classes can only be used by classes and not the direct object instance of it
+    - Implementation of Publish/Subscribe (Pub/Sub) pattern in Javascript?
+    -PubSub Library in Javascript?
+    - Unique usage of object properties in Alex Castrounis Object manipulation
+- Project: To Do List
+- Dynamic User Interface interactions
+    -Skipped
+- Form Validation with Javascript
+    -Skipped
+- What is ES6?
+    -Brief skim
+- JSON
+    -.json()
+    -.parse()
+    -.stringify()
+- Asynchronous Code
+    -use of .catch
+    -Youtube- Novel Tech Media- Javascript Callbacks vs Promises vs Asyns/Await
+    - Web Dev Simplified- Javascript Promises in 10 Minutes
+        - Promise.race vs Promise.all
+    -How does readFile() function work:
+        -https://www.geeksforgeeks.org/node-js-fs-readfile-method/
+        -What does the require button do?
+        -What does the .open() method do? How is it connected to xmlhttprequest()?
+        -What is ajax()?
+        -Skip the You Don't Know Javascript Chapters
+- Working with APIs
+    -How to find API URLS of specific sites
+    -What is the cors{} for fetch apis?
+    -https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+        -Using fetch() for upload and download of content
+        -method get vs method post vs method put
+        -Use of processing a text file line by line
+        -Use of a headers object
+        -Difference between Response and Body
+        -https://developer.mozilla.org/en-US/docs/Web/API/fetch
+        -FormData() and input type file in html
+            -For FormData() --> https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
+- Async and Await
+    -.find() method
+        -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+        -Returns the first element in the provided array that satisfies the testing function
+    -Can you stack asyncs and awaits?
+    - Use of the try/catch block within an async function
+    -https://javascript.info/async-await
+        -".thenable" objects?
+            -If a class of objects contains "then" in its construction, than an object instintiated from this class can use await
+        -Classes can be given async methods by using the async keyword prior to declaring the method within the class
+        -Use of reject/error?
+    -https://codeburst.io/javascript-es-2017-learn-async-await-by-example-48acc58bad65
+        -https://codeburst.io/javascript-learn-promises-f1eaa00c5461
+    -https://www.youtube.com/watch?v=9YkUCxvaLEk - Wes Bos Async Await
+        -Remember use of Promise.all
+        -Using higher order functions to capture errors
+        -Finish watching the video
+
+- Project: Weather App
+    -Skip
+- A Very Brief Intro to CS
+- Recursive Methods
+- Project: Recursion
+- Common Data Structures and Algorithms
+- Project: Linked Lists
+- Project: Binary Search Trees
+- Project: Knights Travails
+- Testing Basics
+- Project: Testing Practice
+- More Testing
+- Project: Battleship
+- A Deeper Look at Git
+- Using Git in the Real World
+- React introduction
+    -What is super()
+        -https://www.w3schools.com/jsref/jsref_class_super.asp
+        -Imports and Exports Reviews
+            -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+            -https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
+    -An Introduction to React Components - https://dev.to/sarah_chima/an-introduction-to-react-components-cke
+        -Capitalization of React Component Classes within html tags, so that those components are reused? (ie if Greeting is a React component, doing ReactDOM.render(<Greeting />, document.getElementById("app)); results in the implementation of the "Greeting" React component in HTML?)
+            -Yes, this conclusion is correct. Also remember that basically React allows you to write reusabale html components in javascript. the document.getElementbyId section in render method allows you to attach whatever was put in the render() part of the react component to be attached to a specific element within an html file. 
+            -This is why React uses CamelCase while html uses lowercase
+    -Importance of render() (Why is it not needed when used with Factory Functions??)
+    -Difference between React Class Components and React Function Components - https://dev.to/colocodes/react-class-components-vs-function-components-23m6
+        -Juggling of the .html, .jsx, and .js files?
+        -What are states and props?
+        -Reread this artice after going over states and props to better understand how they work; then i can better understand the difference between class components and function components
+        -Getting Started with Create React App - https://blog.logrocket.com/getting-started-with-create-react-app-d93147444a27/
+            -Confusion when it comes to connecting npm AND webpack to react
+            -manifest.json??
+            -Work flow for building React Apps with App.js and adding components within the App.js?
+            -Statelss Components? How does CSS and Javascript retooling of HTML fit in?
+            -props.children? 
+            -What is LiveReload?
+    -React 16 For Everyone #2- Create React App and Initial Files Explained - https://www.youtube.com/watch?v=rUdtgnwrA14
+        -favison.ico file?
+        -manifest.json file?
+            -Speaking of json, how can you make your website capable of transmitting into json?
+            -index.js vs index.html vs App.js??
+                -App.js and any various module js files that are created (and were imported into App.js) are both imported into index.js. Within index.js, the .render() method is used to insert the App.js into index.html.
+                -Note that App.css and App.test.js also exist
+            -What is the difference between index.css and App.css?
+    -Debugging Componenents with React Developer Tools- https://www.pluralsight.com/guides/debugging-components-with-react-developer-tools
+        -Return to this once the basics about State and Props are learnt
+    -https://reactjs.org/docs/hello-world.html
+    -https://reactjs.org/docs/introducing-jsx.html
+        -What are cross-site scripting attacks?
+        -React.createElement() calls and Babel?
+    -https://reactjs.org/docs/rendering-elements.html
+        - Explanation of the React Only Updates When Necessary Section
+    -https://reactjs.org/docs/components-and-props.html
+        -React "props" (short for properties) are just object arguments in react functions. These props are objects that in term have different key-value pairs that represent the properties of an element that can appear in a DOM (ie like type: h1) and, I assume they can also be normal key-value pairs like the type seen in normal javascript
+        -When You "Render a Component" in React, you are essentially creating a function and making a new <> element with the function name as the name of the tag. Any "attributes" within these tags that you create are the "props" that the component has access to. For example:
+            -function Welcome(props) {
+            return <h1>Hello, {props.name}</h1>;
+            }
+
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            const element = <Welcome name="Sara" />; /* <Welcome> is a component and the name="" is a prop that is accessed by it. Remember that props are argument objects that hold key-value pairs of the properties of a specific element and/or component */
+            root.render(element);
+
+        -Always name <Component> names with a capital letter to contrast them with html <tags> that are always lowercase. Components should be written in CamelCase
+        -how to do extraction of props
+        -HOW TO DO EXTRACTION OF PROPS!!
+        -Stacking props within React Elements
+    -React Basics- What is React - https://www.youtube.com/watch?v=JPT3bFIwJYA&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS
+    -React basics 2- Setup Workspace with Webpack-https://www.youtube.com/watch?v=uextYhQGP6k&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS&index=2
+        -Babel transpiles ES6 code into ES5 code
+        -The purpose of webpack server for simulating a front-end website?
+- State and Props
+    -States must always be declared innthe constructor class of a component
+    -Usage of "this" keyword when working with using functions in React
+    -Review Destructuring
+    -Use of "bind" in React? Why must bind be used with this--> Is it because you are using a different object each time a component is used?
+    -Remember that React-made components can have html-like attributes like onclick, but they must be camerCased. Therefore it should look like this: <MyComponent onClick={}>
+    -Remember DESTRUCTURING ASSIGNMENT---> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+        -Works differently for objects {} than it does for arrays []
+    -Thinking in React-https://reactjs.org/docs/thinking-in-react.html
+    -How do Lifecycle methods work?
+    -Implementation of props connected to javacsript objects into rendered React components
+    -Why can states mostly be used with classes and not functions (unless with special exceptions?)
+    -Come back to review lifecylce methods
+    -Review the clock-ticking functions of everyhting 
+        -I think componentDidMount(){} and componentWillUnmount(){} are unique methods available to React components, not made up functions
+    -I suppose this.state should always exist in the constructor(props){} method of the constructor class you create
+    -SetInterval vs ClearInterval functions
+    -Asynchronous use of State?? Why is that important??
+        -Do not use this.state to update stuff. Use a previous version
+    -When do you use componentWillUnmount?
+    -What is the importance of the fact that "State Updates are Merged" ?
+    -Importance of "The Data Flows Down"??- States being encapsulated??
+    -State can be passed down as a prop for another React Component
+    -React hooks for the use of states with functional components (since they are mostly used for class components)??
+    -GeeksforGeeks- React Tutorial Series for Props, States, and Unidirectional Flow (first chapter is here: https://www.geeksforgeeks.org/reactjs-props-set-1/)
+        -Prop values can be passed from parent to child
+        -What are defaultProps?
+        -Unidirectional Flow (in React) vs Bidirectional Flow (in Angular)?
+            -Change of state can only go from Parent to child; this is why Parent Components define the value of a prop that a child component puts in its code
+            -Quote: "Changing state on a component will never affect its parent or its siblings, only the children will be affected. This is the main reason that the state is often moved up in the component tree so that it can be shared between the components that need to access it."
+        -Main Difference (in terms of technicality) between props and state
+
+- Handle Inputs and Render Lists
+    -have to skip because you have to learn how to do render lists and input fields on your own first
+- Project: CV Application
+    -Have to Skip because you have to learn everything prior
+- Lifecycle Methods
+    -Programming With Mosh- React Lifecycle Methods- A Deep Dive (https://programmingwithmosh.com/javascript/react-lifecycle-methods/)
+        -What is the clearest explanation of the render timeline?
+        -When to use shouldComponentUpdate()??-- Always boolean?
+        -When to use getDerivedStateFromProps?
+        -When to use getSnapshotBeforeUpdate()?
+    -Reactjs.org- React Component- https://reactjs.org/docs/react-component.html
+        -React Lifecycle methods cheatsheet- https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+        -What are arrays, fragments, and portals in the realm of render()
+        -Using state in a component requires the constructor(props) method and afterwards, super(props) for class building
+        -The initial state of a component is placed in constructor(), the setState() method is used in componentDidMount()
+        -Quote: "Constructor is the only place where you should assign this.state directly. In all other methods, you need to use this.setState() instead. Avoid introducing any side-effects or subscriptions in the constructor. For those use cases, use componentDidMount() instead."
+        -When should States Depend on Props?
+        -What is a snapshot when referring to componentDidUpdate(prevProps, prevState, snapshot)??
+            -The uses of getSnapshotBeforeUpdate() and how its return value is used as a parameter to componentDidUpdate();
+        -setState() usually always triggers a re-render
+    -React Component Lifecycle- Hooks/Methods Explained (https://www.youtube.com/watch?v=m_mtV4YaI8c)
+        -Use of mount?
+        -The creation and deletion of jsx (remember that jsx is actually html) can actually be made conditional based on javascript easily thanks to React
+        -shouldComponentReact() is used to let React know whether a component in the DOM needs to be rendered again
+        -is the ignoreProp thing an official React method or just an example name?
+        -I THINK THAT WHENEVER YOU DEFININE METHODS WITHIN COMPONENTS THAT YOU INTEND TO USE AGAIN, USE ARROW FUNCTIONS. THAT WAY THE CONTEXT OF "THIS" FOR A METHOD IS RETAINED BY THE OBJECT/FUNCTION/CLASS IT WAS CREATED IN, AND YOU DO NOT NEED TO USE .BIND TO MAKE SURE THE CONTEXT OF "THIS" IS MAINTAINED
+        -Does getDerivedStateFromProp() allow you to set the state of something from a prop, or vice versa?
+        -How to set up componentDidCatch()??
+        -Stopped at 21:16 --> Rewatch later or find a different video that explains without bugs or mistakes
+- Hooks
+    -React: Class Component VS Function Component With Hooks(https://dev.to/danielleye/react-class-component-vs-function-component-with-hooks-13dg)
+        -What is an Ajax request??
+        -Use of clearInterval?
+        -The Correct Order to Use hooks?
+        -beta.reactjs.org --> useState()
+            - const [state, setState] = useState(initialState)
+            -initialState- the value you want the state to be initially. This argument is ignored after the initial render
+            -useState returns an array with exactly two values
+                -The current state. During the first render, it will match the initialState you have passed
+                -The set function (ie setState) that lets you update the state to a different value and trigger a re-render.
+        -useEffect
+            - Syntax: useEffect(() => {}, [])
+                -Combines componentDidRun and componentDidUpdate into one method. 
+                -Curly brackets {} contain code that is executed when render occurs, similiar to componentDidMount
+                -square brackets [] contain the dependency- the variable that needs to be changed in order to trigger the curly bracket code into running again (basically a componentDidUpdate)
+                -The square bracket [] for dependencies is OPTIONAL- removing it means that useEffect will run during the first render and ANYTIME the component is updated, without the dependency on a specific variable 
+                -The useEffect(() => []) can contain a return statement within the curly brackets like this: return () => {}
+                    -This return statement acts as the componentWillUnmout
+        - React.js- Introducing Hooks- (https://reactjs.org/docs/hooks-intro.html)
+            -React.js- Hooks at a Glance - (https://reactjs.org/docs/hooks-overview.html)
+                -Rules of Hooks- only call at the top level (not in loops, conditions or nested functions) and only us ethem in React function components
+                -Custom Hooks?
+            -React.js- Using the State hook- https://reactjs.org/docs/hooks-state.html
+                -
+            -React.js- Using the Effect Hook - https://reactjs.org/docs/hooks-effect.html
+                -What determines whether or not somethign needs cleanup or not?
+                -How do subscriptions cause memory leaks?
+                -For class example of the clean up stage, remember to use bind() when working with methods you plan to reuse in either componentDidMount or its ilk since you want "this" to be preserved (or, use arrow functions)
+                What is statusChange in the example?
+                -Finish the rest of the asdvanced sections at a later time
+            -React.js- Rules of Hooks- https://reactjs.org/docs/hooks-rules.html
+                -
+            -React.js- Building Your Own Hooks
+                -what is ChatAPI.subscribeToFriendStatus?? THE MAIN ROADBLOCK OF UNDERSTANDING!!
+                -What are render props and Higher-Order Components
+                -CUSTOM HOOKS MUST START WITH "use" FOR GOOD NAMING CONVENTION (ie useIntelligence), similair to how useState and useEffect are ReactHooks
+                -How can your own hook be built? Does a custom hook return the state variable created in the useState function? It seems like thats not a requiremenr but still might be good practice? Ex: 
+                    import { useState, useEffect } from 'react';
+
+                    function useFriendStatus(friendID) {
+                    const [isOnline, setIsOnline] = useState(null);
+
+                    useEffect(() => {
+                        function handleStatusChange(status) {
+                        setIsOnline(status.isOnline);
+                        }
+
+                        ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange);
+                        return () => {
+                        ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange);
+                        };
+                    });
+
+                    return isOnline;
+                    }
+
+- Project: Memory Card
+    -Skip and do Project Later
+    
+- Router
+    --Review Routing Later
+    -React Router- Main Overview- https://reactrouter.com/en/main/start/overview
+        -Read Later
+    -React Router Tutorial by developedbyed
+        -what is the <nav> element?
+        -Renaming elements during import? (ie import {BrowserRouter as Router})
+        -different terminology betweeen v5 and v6
+        - The "exact" keyword
+        - import {Link} from 'react-router-dom" 
+            -and combining with <nav>
+        -Around 23 minutes --> Routing for shop:id??
+            -How does the <Link> tag give you access to a React component's props?
+            -How is ItemDetail connected to Shop.js? 
+- React Testing Part 1
+    -Return when going over testing
+- React Testing Part 2
+    -Return when going over testing
+- Project: Shopping Cart
+    -Return later and do later
+- Advanced Concepts
+- Using BaaS For Your Back End
+- Project: Where's Waldo
+- Project: Javascript Final Project
+- Conclusion
+
+
+
+
+
+
+Grind Mode Notes (NodeJS)
+
+- Introduction: What is NodeJS
+- Getting Started
+- Debugging Node
+- Project: Basic Informational Site
+- INtroduction to MongoDB
+- Introduction to Express
+- Express 101
+- Express 102: CRUD and MVC
+- Preparing for Deployment
+- Project: Mini Message Board
+- Express 103: Routes and Controllers
+- Express 104: View Templates
+- Project: Express 105: Forms and Deployment
+- Project: Inventory Application
+- Authentication Basics
+- Security Configuration
+- Project: Members Only
+- API Basics
+- API Security
+- Project: Blog API
+- Testing Toutes and Controllers
+- Testing Database Operations
+- Project: Odin-Book
+
+
 
         
 
