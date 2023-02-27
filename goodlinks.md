@@ -158,3 +158,9 @@ https://reactjs.org/docs/thinking-in-react.html
 
 React Lifestyle Methods CheatSheet
 https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+JSON.parse, JSON.stringify, the Reviver function for parsing, and the replacer function for stringify
+https://javascript.info/json
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+https://usefulangle.com/post/112/json-parse-reviver-function

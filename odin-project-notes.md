@@ -1930,6 +1930,11 @@ Grind Mode Notes (Javascript)
     -.json()
     -.parse()
     -.stringify()
+    -*Remember that when dealing with JSON, properties of objects can change and methods are removed. Use reviver and replace functions to ensure that some functionality is returned. MUST LOOK UP WAYS TO RETURN METHODS BACK TO FUNCTIONS THAT HAVE BEEN LOST
+    https://javascript.info/json
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+    https://usefulangle.com/post/112/json-parse-reviver-function
 - Asynchronous Code
     -use of .catch
     -Youtube- Novel Tech Media- Javascript Callbacks vs Promises vs Asyns/Await
