@@ -164,3 +164,7 @@ https://javascript.info/json
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
 https://usefulangle.com/post/112/json-parse-reviver-function
+
+
+Responsive Layout (mobile css, tablet css and desktop css)
+https://www.internetingishard.com/html-and-css/responsive-design/#mobile-first-development

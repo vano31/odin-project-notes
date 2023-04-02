@@ -1921,7 +1921,7 @@ Grind Mode Notes (Javascript)
     - Unique usage of object properties in Alex Castrounis Object manipulation
 - Project: To Do List
 - Dynamic User Interface interactions
-    -Skipped
+    -https://www.internetingishard.com/html-and-css/responsive-design/#mobile-first-development --> Responsive Design for CSS
 - Form Validation with Javascript
     -Skipped
 - What is ES6?
