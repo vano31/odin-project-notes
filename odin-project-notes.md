@@ -1986,8 +1986,268 @@ Grind Mode Notes (Javascript)
 - Project: Binary Search Trees
 - Project: Knights Travails
 - Testing Basics
+    -The Importance of Test Driven Development (https://web.archive.org/web/20211123190134/http://godswillokwara.com/index.php/2016/09/09/the-importance-of-test-driven-development/)
+        - Add a test >> Run the test >>fail>> Make  a little change >>Pass>> Development stops
+    -FunFunFunctions- Javascript Testing
+        -Video 1: Using testing is done whenever the logical path of your code increases in complexity and multiple paths are possibl- one cannot keep track of everything
+        -Video 2: Always write tests BEFORE actually creating the function or line of code, so that you can actually be motivated to use the test AND so that 
+    -Getting Started- jestjs.io (https://jestjs.io/docs/getting-started)
+        - First make function, and use module.exports
+        - Then use a matcher
+    -Using matchers- jestjs.io (https://jestjs.io/docs/using-matchers)
+        -Different kinds of matchers exist to allow you to do different types of checks
+        - Checks for different types of truthiness
+            -toBeNull
+            -toBeUndefined
+            -toBeDefined
+            -toBeTruthy
+            -toBeFalsy
+        -Null means a variable has been declared and assigned a value of nothing, while undefined means a variable has been declated but not assigned anything
+        -Checks for numbers
+            -toBeGreaterThanOrEqual, etc
+            - toHaveLength
+        -Checks for Strings
+            -toMatch
+        -Checks Arrays and Iterables
+            -toContain
+        -Checks to see if an error is thrown (Exception)
+            - toThrow()
+            - toThrow(Error)
+            - toThrow('exact string of error or parts of the error')
 - Project: Testing Practice
+    - ES6 array functions are extremely useful
 - More Testing
+    - Pure Functions
+        - https://medium.com/@jamesjefferyuk/javascript-what-are-pure-functions-4d4d5392d49c
+            - Pure functions always return the same results if the same arguments are passed in and do not depend on any state, outside variable, or data change during a program's execution. It only depends on input arguments
+            - Pure functions do not produce any observable side effects such as network requests, input and output devices, or data mutation.
+                -Observable side effects are any interactions with the outisde world from within a function- Include HTTP requests, data mutation, printing to screen or console, DOM manipulation
+    - Mocking
+        - (My Own Articles)- Understanding Jest Mocks- (https://medium.com/@rickhanlonii/understanding-jest-mocks-f0046c68e53c)
+        - FunFunFunctions -> Mocking Videos
+            -In a unit of code that requires interaction towards and from an external API, use mocks to create tests that make sure that
+                - The right data is being sent TOWARDS an imaginary mock function/module
+                - Given an imaginary mock function/module with preset/example parameters, the right data is being RECIEVED FROM the fake mock 
+        -Mocking is A Code Smell (https://medium.com/javascript-scene/mocking-is-a-code-smell-944a70c90a6a)
+            - If you are doing too much mocking and it is taking too much time, than you are not making pure functions and your code is too tightly coupled
+            - The process of learning effective TDD is the process of learning how to build more modular applications
+            - Three different types of testing
+                - Unit Testing
+                - Integration Testing
+                - Functional Testing
+            - Mock
+                - A Test Double that stands for real implementation code during the unit testing process
+                - Can produce assertations about how it was manipulated by the test subject duting the test run
+            - Unit Test
+                - Tests individual units (modules, functions, classes) in isolation from the rest of the program.
+                - Different from integration tests and functional tests
+                - Rely on black box integration (using public API tests and not tests on implentation details since public API details rarely change)
+            - Test Coverage
+                - Amount of code covered by test cases
+                - Code Coverage: much of the code is exercised
+                - Case Coverage: How many of the use-cases are covered by the test suites
+            - Tight Coupling
+                - The reason that mock tests even exist
+                - units that are dependant on each other (the opposite of pure functions)
+                - Coupling is the degree to which a unit of code (module, function, class, etc...) depends upon other units of code
+                - Tight coupling is a high degree of coupling, refers to how likely a unit is to break when changes are made to its dependencies
+                - The tighter the coupling, the harder it is to maintain or extend the application
+            - The essence of software development is the process of breaking a large problem down into smaller, independant pieces (decomposition) and composing the solutions together to form an application that solves the large problem (composition)
+                - Mocking is required when our decomposition strategy has failed
+                - mocking is required when the unit used to break the large problem down into smaller parts depend on each other
+            - Generic composition utility methods?
+            - Declarative vs Imperative Programming?
+                - Imperative Programming
+                    - Listing out everything the computer needs to do in a step by step process
+                - Declarative Programming
+                    - Describing what you want the program to achieve
+                    - Emphasizes less on implementation and more on what you want out of the code
+                    - Forces tou to ask first what you want out of the program
+                - (https://www.educative.io/blog/declarative-vs-imperative-programming)
+                - Professor Fisby's Mostly Adequate Guide to Functional Programming (https://dev.to/englishcraig/a-review-of-professor-fisby-s-mostly-adequate-guide-to-functional-programming-2p2)
+            - How to Reduce Coupling
+                - Use pure functions as the atomic unit of components, as opposed to classes, imperative procedures, or mutating functions
+                - Isolate side-effects from the rest of your program logic. That means don't mix logic with I/O, (including network I/O, rendering UI, logging, etc)
+                - Remove dependant logic from imperative compositions so that they can become declarative compositions which don;t need their own unit tests
+                -- Dont unit test I/O. I/O is for integrations. Use integration tests, instead
+            - Use pure functions
+                - pure functions do not directly mutate global variables, the atguments passed into them, the network, the disk, or the screen. All they can do is return a value
+                - Make new objects with the updated values
+                - What is redux???
+            - Isolate side effects 
+                - Use pub/sub to decouple I/O from views and program logic
+                    - Publish/Subscribe Pattern
+                    - Units do not directly call each other- they publish messages that other units (subscribers) can listen to
+                    - Design Patterns in Javascript: Publish-Subscribe of PubSub
+                        - https://dev.to/anishkumar/design-patterns-in-javascript-publish-subscribe-or-pubsub-20gf
+                    - java Guides: Javascript Publish/Subscribe Pattern Example
+                        - https://www.javaguides.net/2019/06/javascript-publishsubscribe-pattern-example.html
+                    - RedHat: The pros and cons of the Pub-Sub Architecrue
+                    - RefatoringGuru- PubSub(https://refactoring.guru/design-patterns/observer)
+                - Isolate logic from I/O e.g., compose functions which return promises using asyncPipe()
+                - Logic and I/O are seperate concerns- Logic is thinking, Effects are actions. Think before you act!
+                - Use objects that represent future computations rather than directly triggering computations with I/O
+            - Mocking is Great for Integration Tests
+        - Jest- Setup and Teardown (https://jestjs.io/docs/setup-teardown)
+            - Repeating Setup
+                - beforeEach(function) - does initialization work before each test unit in a file, can handle async code
+                - afterEach(fuction) - does initialization work after each test unit in a file, can handle async code
+            - One-Time Setup
+                - beforeAll(function) - performs a set up function once at the beginning of the file
+                - afterAll(function) - performs a set up function at the end of the file
+            - Scoping
+                - Top level before* and after* hooks apply to every test in a file. before* and after* hooks declared inside a descirbe block only apply to tests inside that describe block
+                - describe block- (https://jestjs.io/docs/api#describename-fn)
+                    - describe(name, fn) creates a block that groups together several related tests.
+                    - Describe blocks are executed prior to any actual tests in aa file
+            - Order of Execution
+                - Jest executes all describe handlers in a test file before it executes any of the actual tests
+                - Jest executes all test files in the order they were encountered after all the describe blocks have been run
+                - Be wary of the order in which tests are executed
+            - General Advice
+        - Jest - Mock Functions (https://jestjs.io/docs/mock-functions)
+            - Mocks allow you to test the links between code by erasing the actual implementation of a function, capturing calls to the function (and parameters passed in those calls), capturing instances of constructor functions
+            - Using a mock function
+                - const mockfunction =  jest.fn(function)
+                - expect(mockfunction.mock.calls).toHaveLength(insertnumber)
+                - expect(mockfunction.mock.calls[0][0]).toBe(insertargument) //the first argument of the first call to the function mockfunction should be the argument within the parantheses
+                - expect(mockfunction.mock.calls[1][0]).toBe(insertargument) //the first argument of the second call to the function mockfunction should be the argument wihtin the parantheses
+                - expect(mockfunction.mock.results[0].value).toBe(insertnumber) //the return value of the first call to the function is the number inside the parentheses
+            - .mock property
+                - .mock property has data about how the function has been called, what the function returned is kept, the value of "this" for each call, instances of function instantiation, and contexts
+                - See website for examples of use: 
+                    - .mock.instances
+                    - .mock.context
+                    - .mock.calls
+                    - .mock.results
+                    - .mock.lastCall
+
+            - Mock Return Values
+                - const myMock = jest.fn();
+                    - myMock.mockReturnValue('value to be returned') --> (https://jestjs.io/docs/mock-function-api#mockfnmockreturnvaluevalue)
+                    - myMock.mockReturnValueOnce(10).mockReturnValueOnce('x').mockReturnValueOnce(true)
+                        - console.log(myMock(), myMock(), myMock(), myMock()) // > 10, 'x', true, true
+            - Mocking Modules
+                - Use to mock entire imported modules
+                - jest.mock('insert already imported modules here')
+                - .mockResolvedValue(createdValue)
+                    - Use once a module has been mocked in order to force the mocked module to produce a value that you want
+                    - MUST USE EXAMPLE FROM SITE
+
+            - Mocking Partials
+                - You can pick and choose what functions or methods are mocked from a module, and can create functions that represent what you want those specific functions to be
+                
+                - jest.mock('file with module', () => {
+                    const originalModule = jest.requireActual('file with module');
+                    return {
+
+                        __esModule: true,
+                        ...originalModule,
+                        //changes
+                        //changes
+
+                    }
+                })
+                - esModule: true --> (https://jestjs.io/docs/jest-object)
+                    - foo-bar-baz.js
+                        export const foo = 'foo';
+                        export const bar = () => 'bar';
+                        export default () => 'baz';
+                    - test.js
+                        import defaultExport, {bar, foo} from '../foo-bar-baz';
+                        jest.mock('../foo-bar-baz', () => {
+                        const originalModule = jest.requireActual('../foo-bar-baz');
+
+                        //Mock the default export and named export 'foo'
+                        return {
+                            __esModule: true,
+                            ...originalModule,
+                            default: jest.fn(() => 'mocked baz'),
+                            foo: 'mocked foo',
+                        };
+                        });
+
+                        test('should do a partial mock', () => {
+                        const defaultExportResult = defaultExport();
+                        expect(defaultExportResult).toBe('mocked baz');
+                        expect(defaultExport).toHaveBeenCalled();
+
+                        expect(foo).toBe('mocked foo');
+                        expect(bar()).toBe('bar');
+                        });
+
+            - Mock Implementations
+                - .mockImplementation is used to replace the full on implementation of a mock function instead of just specifying a return value
+                - .mockImplementation is similiar to jest.fn(), but it is good when you want to define a default implementation from an imported module
+                    - foo.js
+                        - module.exports = function() {
+                            //some implementation
+                        }
+                    - test.js
+                        - jest.mock('../foo'); //allows you to automatically import a function/module and turn it into a mock 
+                        - const foo = require('../foo');
+                        //foo is a mock function
+                        foo.mockImplementation(() => 42);
+                        foo(); --> // >  42
+                - .mockImplementationOnce()
+                    - if mocked function runs out of mockedimplementations defined with .mockImplementationOnce(), it will refer to the result of the mocked function as default within the command line after running the test
+                - .mockReturnThis();
+            - Mock Names
+                - .mockName('name of mock in test output') 
+                    - Is used to give a mock function a specific name in the test output
+            - Custom Matchers
+                - expect(mockFunc).toHaveBeenCalled()
+                - expect(mockFunc).toHaveBeenCalledWith(arg1, arg2)
+                - expect(mockFunc).toHaveBeenLastCalledWith(arg1, arg2);
+                - expect(mockFunc).toMatchSnapshot(); // All calls and the name of the mock are written as a snapshot
+        - Personal Notes- Javascript Testing: Jest Mocks (https://www.youtube.com/watch?v=OS5mVVM5vAg&pp=ygUTbW9ja2luZyBqYXZhc2NyaXB0IA%3D%3D)
+            - jest.fn()
+                - Use afterEach(() => {
+                    jest.clearAllMocks();
+                }) should be used to clear if they are defined at higher scope (ie at the top) and reused in multiple test cases --> Remember order of test execution in jest when using the describe blocks and test blocks
+            - jest.spyOn()
+                - Used in tandem with .mockImplementation() to allow you to take specific functions from modules, change what they return, and allow you to spy on them
+                - Example
+                    - // 
+            - jest.mock()
+            - import vs require when it comes to runtime differences
+            - jest.doMock() in order to do mocking at the runtime and not after
+        - Personal Notes- SOLID Principles for Programming and Software Design
+            - Important for Readability, Testability, and Maintainability
+            - S - Single Responsibility Principle
+                - Class/function should only have one job to do and do only one thing
+                - IMO can probably make testing easier because it means unit tests only have to test for classes/functions to do one thing correctly
+                - ie. validatePerson() vs displayPerson()
+            - O - Open-Closed Principle
+                - classes/functions should be OPEN for external extension
+                - classes/functions should be CLOSED for internal modification
+                - ie: makeIceCream() (with specific array of preexisting ice cream flavors) and addIceCreamFlavor() to add more flavors to the array specified in makeIceCream()
+                - IMO, can probably make tests easier becasue existing tests won't fail if new functionality is added because the original output of a function is still present, and new functionality is added via external functions and not internally
+            - L - Liskov Substitution Principle
+                - Child classes/functions should be replacable with parent classes/functions and have the exact same functionality without breaking anything
+                - What this means is that all child classes/functions should have the same attributes of parent classes/functions
+                - ie. Square(w,h, color) should not be the parent of Rectangle(w,h, color) even though in real life a Square is a form of Rectangle, because depending on implementation, if you were to replace rectangle with square, you can use it to replace the .color method, but the rectangle.area would be wrong due to different implementation, even though the color method is the same
+                    - instead, both square() and rectangle() should be children of the parent shape(), where shape() only has .color as an attribute. That way, you can replace shape() with rectangle() and the .color method would be the same
+                - IMO, probably done so that inheritance and class trees are clearly defined, sensible, and easy to test and replace if things go wrong
+            - I - Interface Segregation Principle
+                - A client should never be forced to implement an interface that it doesn't use, or clients shouldn't be forced to depend on mehtods they do not use
+                - IMO, not entirely sure how it works, but I believe that it means classes/functions/objects should only inherit methods that it will use, and should not have methods that it will never use or methods that it can't use
+                    -ie, if shapeInterface() has methods calculateArea() and calculateVolume(), a square() class that is a child of shapeInterface() would inherit both calculateArea() and calculateVolume(), and it can't use calculateVolume(). Conversly, a cube() class that is a child of shapeInterface() inherits both calculateArea() and calculateVolume(), and it will never use calculateArea()
+                        -Do better at class organization
+            - D - Dependency Inversion Principle
+                - High level modules should not import anything from low-leel modules. Both should depend on abstractions
+                - Abstractions should be indpendant of details. Details (concrete implementations) should depend on abstractions
+                - ie -->Do not do store() --coupled--> Stripeinterface() --coupled--> stripe(); Do store() --coupled--> storeAPIabstraction() --coupled--> Stripeinterface() --> Stripe()
+                    - That way, you can switch to store() --coupled--> storeAPIabstraction() --coupled--> Paypalinterface() --coupled--> paypal() if you wanted to, and it would not break the code
+                - IMO, important because it makes mock testing easier, decouples your code even more, and allows you to replace modules and APIs with ease without any issues
+        - Refactoring Guru - Observer (Publisher/Subscriber Pattern) - (https://refactoring.guru/design-patterns/observer)
+            - Pseudocode: Check again on site
+        - More Pub Sub Information
+            - https://aws.amazon.com/what-is/pub-sub-messaging/
+            - https://medium.com/@thebabscraig/javascript-design-patterns-part-2-the-publisher-subscriber-pattern-8fe07e157213
+        - 
+
+
 - Project: Battleship
 - A Deeper Look at Git
 - Using Git in the Real World
